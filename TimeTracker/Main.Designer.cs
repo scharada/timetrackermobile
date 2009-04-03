@@ -32,6 +32,7 @@
             this.mainMenu1 = new System.Windows.Forms.MainMenu();
             this.TabMain = new System.Windows.Forms.TabControl();
             this.tabPageTasks = new System.Windows.Forms.TabPage();
+            this.lblTotal = new System.Windows.Forms.Label();
             this.lblDatePost = new System.Windows.Forms.LinkLabel();
             this.lblDatePrev = new System.Windows.Forms.LinkLabel();
             this.lblDate = new System.Windows.Forms.Label();
@@ -45,7 +46,6 @@
             this.cmbActivities = new System.Windows.Forms.ComboBox();
             this.btnStartStop = new System.Windows.Forms.Button();
             this.tabPageGraph = new System.Windows.Forms.TabPage();
-            this.lblTotal = new System.Windows.Forms.Label();
             this.TabMain.SuspendLayout();
             this.tabPageTasks.SuspendLayout();
             this.SuspendLayout();
@@ -75,6 +75,13 @@
             this.tabPageTasks.Name = "tabPageTasks";
             this.tabPageTasks.Size = new System.Drawing.Size(240, 244);
             this.tabPageTasks.Text = "Tasks";
+            // 
+            // lblTotal
+            // 
+            this.lblTotal.Location = new System.Drawing.Point(151, 156);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(82, 20);
+            this.lblTotal.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // lblDatePost
             // 
@@ -160,6 +167,7 @@
             this.cmbActivities.Name = "cmbActivities";
             this.cmbActivities.Size = new System.Drawing.Size(129, 22);
             this.cmbActivities.TabIndex = 2;
+            this.cmbActivities.SelectedIndexChanged += new System.EventHandler(this.cmbActivities_SelectedIndexChanged);
             // 
             // btnStartStop
             // 
@@ -167,22 +175,15 @@
             this.btnStartStop.Name = "btnStartStop";
             this.btnStartStop.Size = new System.Drawing.Size(72, 59);
             this.btnStartStop.TabIndex = 1;
-            this.btnStartStop.Text = "Start-Stop";
+            this.btnStartStop.Text = "Start";
             this.btnStartStop.Click += new System.EventHandler(this.btnStartStop_Click);
             // 
             // tabPageGraph
             // 
             this.tabPageGraph.Location = new System.Drawing.Point(0, 0);
             this.tabPageGraph.Name = "tabPageGraph";
-            this.tabPageGraph.Size = new System.Drawing.Size(232, 239);
+            this.tabPageGraph.Size = new System.Drawing.Size(232, 241);
             this.tabPageGraph.Text = "Graph";
-            // 
-            // lblTotal
-            // 
-            this.lblTotal.Location = new System.Drawing.Point(151, 156);
-            this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(82, 20);
-            this.lblTotal.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // Main
             // 
