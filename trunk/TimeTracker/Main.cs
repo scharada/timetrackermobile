@@ -25,6 +25,7 @@ namespace TimeTracker
         private DateTime start;
         private DateTime now;
         private DateTime today;
+        private Guid activityGuid;
 
         public delegate void ChangeTime();
         public ChangeTime myDelegate;
@@ -100,9 +101,10 @@ namespace TimeTracker
         {
             if (!running)
             {
+                running = true;
                 start = DateTime.Now;
                 timer = new System.Threading.Timer(new TimerCallback(this.TimerElapsed), null, 0, 100);
-                running = true;
+                this.btnStartStop.Text = "Stop";
                 lblStart.Text = DateTime.Now.ToShortTimeString();
             }
             else
@@ -110,18 +112,25 @@ namespace TimeTracker
                 running = false;
                 timer.Dispose();
                 timer = null;
-                TimeSpan timeSpan = new TimeSpan();
-                int diff = 0;
-                timeSpan = now - start;
-                diff = diff + timeSpan.Hours * 3600;
-                diff = diff + timeSpan.Minutes * 60;
-                diff = diff + timeSpan.Seconds;
-
-                Task task = new Task { ActivityId = new Guid(this.cmbActivities.SelectedValue.ToString()), DatetimeFrom = start, DatetimeTo = now, Diff = diff };
-                this.taskService.AddTask(task);
-
+                this.btnStartStop.Text = "Start";
+                
+                SaveTask(activityGuid);
+                //new Guid(this.cmbActivities.SelectedValue.ToString())
                 this.FillGrid();
             }
+        }
+
+        private void SaveTask(Guid activityId)
+        {
+            TimeSpan timeSpan = new TimeSpan();
+            int diff = 0;
+            timeSpan = now - start;
+            diff = diff + timeSpan.Hours * 3600;
+            diff = diff + timeSpan.Minutes * 60;
+            diff = diff + timeSpan.Seconds;
+
+            Task task = new Task { ActivityId = activityId, DatetimeFrom = start, DatetimeTo = now, Diff = diff };
+            this.taskService.AddTask(task);
         }
 
         private void lblDatePost_Click(object sender, EventArgs e)
@@ -136,6 +145,21 @@ namespace TimeTracker
             today = today.AddDays(-1);
             this.lblDate.Text = today.ToLongDateString();
             this.FillGrid();
+        }
+
+        private void cmbActivities_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (running)
+            {
+                btnStartStop_Click(sender, e);
+                System.Threading.Thread.Sleep(400);
+                btnStartStop_Click(sender, e);
+                activityGuid = new Guid(this.cmbActivities.SelectedValue.ToString());
+            }
+            else
+            {
+                activityGuid = new Guid(this.cmbActivities.SelectedValue.ToString());
+            }
         }
     }
 }
