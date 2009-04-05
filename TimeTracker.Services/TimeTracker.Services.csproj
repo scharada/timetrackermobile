@@ -58,6 +58,8 @@
   <ItemGroup>
     <Compile Include="Data\Dataaccess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Providers\DBConnectionProvider.cs" />
+    <Compile Include="Providers\IDBConnectionProvider.cs" />
     <Compile Include="TaskService.cs" />
   </ItemGroup>
   <ItemGroup>
