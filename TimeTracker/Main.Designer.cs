@@ -46,19 +46,40 @@
             this.cmbActivities = new System.Windows.Forms.ComboBox();
             this.btnStartStop = new System.Windows.Forms.Button();
             this.tabPageGraph = new System.Windows.Forms.TabPage();
+            this.tabPageSettings = new System.Windows.Forms.TabPage();
+            this.txtCategory = new System.Windows.Forms.TextBox();
+            this.btnRemove = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
+            this.lvwActivity = new System.Windows.Forms.ListView();
+            this.colCategory = new System.Windows.Forms.ColumnHeader();
+            this.tabPageExport = new System.Windows.Forms.TabPage();
+            this.lblFrom = new System.Windows.Forms.Label();
+            this.dtpFrom = new System.Windows.Forms.DateTimePicker();
+            this.tabPageAbout = new System.Windows.Forms.TabPage();
+            this.lblTo = new System.Windows.Forms.Label();
+            this.dtpTo = new System.Windows.Forms.DateTimePicker();
+            this.btnExport = new System.Windows.Forms.Button();
+            this.prgExport = new System.Windows.Forms.ProgressBar();
+            this.lblExportStatus = new System.Windows.Forms.Label();
             this.TabMain.SuspendLayout();
             this.tabPageTasks.SuspendLayout();
+            this.tabPageSettings.SuspendLayout();
+            this.tabPageExport.SuspendLayout();
             this.SuspendLayout();
             // 
             // TabMain
             // 
             this.TabMain.Controls.Add(this.tabPageTasks);
             this.TabMain.Controls.Add(this.tabPageGraph);
+            this.TabMain.Controls.Add(this.tabPageSettings);
+            this.TabMain.Controls.Add(this.tabPageExport);
+            this.TabMain.Controls.Add(this.tabPageAbout);
             this.TabMain.Location = new System.Drawing.Point(0, 0);
             this.TabMain.Name = "TabMain";
             this.TabMain.SelectedIndex = 0;
             this.TabMain.Size = new System.Drawing.Size(240, 267);
             this.TabMain.TabIndex = 0;
+            this.TabMain.SelectedIndexChanged += new System.EventHandler(this.TabMain_SelectedIndexChanged);
             // 
             // tabPageTasks
             // 
@@ -185,6 +206,132 @@
             this.tabPageGraph.Size = new System.Drawing.Size(232, 241);
             this.tabPageGraph.Text = "Graph";
             // 
+            // tabPageSettings
+            // 
+            this.tabPageSettings.Controls.Add(this.txtCategory);
+            this.tabPageSettings.Controls.Add(this.btnRemove);
+            this.tabPageSettings.Controls.Add(this.btnAdd);
+            this.tabPageSettings.Controls.Add(this.lvwActivity);
+            this.tabPageSettings.Location = new System.Drawing.Point(0, 0);
+            this.tabPageSettings.Name = "tabPageSettings";
+            this.tabPageSettings.Size = new System.Drawing.Size(232, 241);
+            this.tabPageSettings.Text = "Settings";
+            // 
+            // txtCategory
+            // 
+            this.txtCategory.Location = new System.Drawing.Point(11, 175);
+            this.txtCategory.Name = "txtCategory";
+            this.txtCategory.Size = new System.Drawing.Size(137, 21);
+            this.txtCategory.TabIndex = 7;
+            // 
+            // btnRemove
+            // 
+            this.btnRemove.Location = new System.Drawing.Point(154, 212);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(72, 20);
+            this.btnRemove.TabIndex = 6;
+            this.btnRemove.Text = "Remove";
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Location = new System.Drawing.Point(154, 176);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(72, 20);
+            this.btnAdd.TabIndex = 5;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // lvwActivity
+            // 
+            this.lvwActivity.Columns.Add(this.colCategory);
+            this.lvwActivity.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular);
+            this.lvwActivity.FullRowSelect = true;
+            this.lvwActivity.Location = new System.Drawing.Point(0, 0);
+            this.lvwActivity.Name = "lvwActivity";
+            this.lvwActivity.Size = new System.Drawing.Size(240, 156);
+            this.lvwActivity.TabIndex = 4;
+            this.lvwActivity.View = System.Windows.Forms.View.Details;
+            // 
+            // colCategory
+            // 
+            this.colCategory.Text = "Category";
+            this.colCategory.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.colCategory.Width = 210;
+            // 
+            // tabPageExport
+            // 
+            this.tabPageExport.Controls.Add(this.lblExportStatus);
+            this.tabPageExport.Controls.Add(this.prgExport);
+            this.tabPageExport.Controls.Add(this.btnExport);
+            this.tabPageExport.Controls.Add(this.lblTo);
+            this.tabPageExport.Controls.Add(this.dtpTo);
+            this.tabPageExport.Controls.Add(this.lblFrom);
+            this.tabPageExport.Controls.Add(this.dtpFrom);
+            this.tabPageExport.Location = new System.Drawing.Point(0, 0);
+            this.tabPageExport.Name = "tabPageExport";
+            this.tabPageExport.Size = new System.Drawing.Size(240, 244);
+            this.tabPageExport.Text = "Export";
+            // 
+            // lblFrom
+            // 
+            this.lblFrom.Location = new System.Drawing.Point(17, 8);
+            this.lblFrom.Name = "lblFrom";
+            this.lblFrom.Size = new System.Drawing.Size(100, 20);
+            this.lblFrom.Text = "From";
+            // 
+            // dtpFrom
+            // 
+            this.dtpFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFrom.Location = new System.Drawing.Point(14, 29);
+            this.dtpFrom.Name = "dtpFrom";
+            this.dtpFrom.Size = new System.Drawing.Size(75, 22);
+            this.dtpFrom.TabIndex = 0;
+            // 
+            // tabPageAbout
+            // 
+            this.tabPageAbout.Location = new System.Drawing.Point(0, 0);
+            this.tabPageAbout.Name = "tabPageAbout";
+            this.tabPageAbout.Size = new System.Drawing.Size(232, 241);
+            this.tabPageAbout.Text = "About";
+            // 
+            // lblTo
+            // 
+            this.lblTo.Location = new System.Drawing.Point(126, 8);
+            this.lblTo.Name = "lblTo";
+            this.lblTo.Size = new System.Drawing.Size(100, 20);
+            this.lblTo.Text = "To";
+            // 
+            // dtpTo
+            // 
+            this.dtpTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpTo.Location = new System.Drawing.Point(123, 29);
+            this.dtpTo.Name = "dtpTo";
+            this.dtpTo.Size = new System.Drawing.Size(75, 22);
+            this.dtpTo.TabIndex = 2;
+            // 
+            // btnExport
+            // 
+            this.btnExport.Location = new System.Drawing.Point(126, 172);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(72, 20);
+            this.btnExport.TabIndex = 4;
+            this.btnExport.Text = "Export";
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            // 
+            // prgExport
+            // 
+            this.prgExport.Location = new System.Drawing.Point(17, 101);
+            this.prgExport.Name = "prgExport";
+            this.prgExport.Size = new System.Drawing.Size(181, 20);
+            // 
+            // lblExportStatus
+            // 
+            this.lblExportStatus.Location = new System.Drawing.Point(70, 122);
+            this.lblExportStatus.Name = "lblExportStatus";
+            this.lblExportStatus.Size = new System.Drawing.Size(128, 20);
+            this.lblExportStatus.Text = "Status";
+            this.lblExportStatus.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -198,6 +345,8 @@
             this.Load += new System.EventHandler(this.Main_Load);
             this.TabMain.ResumeLayout(false);
             this.tabPageTasks.ResumeLayout(false);
+            this.tabPageSettings.ResumeLayout(false);
+            this.tabPageExport.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -220,5 +369,20 @@
         private System.Windows.Forms.LinkLabel lblDatePrev;
         private System.Windows.Forms.LinkLabel lblDatePost;
         private System.Windows.Forms.Label lblTotal;
+        private System.Windows.Forms.TabPage tabPageSettings;
+        private System.Windows.Forms.ListView lvwActivity;
+        private System.Windows.Forms.ColumnHeader colCategory;
+        private System.Windows.Forms.TabPage tabPageAbout;
+        private System.Windows.Forms.TextBox txtCategory;
+        private System.Windows.Forms.Button btnRemove;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.TabPage tabPageExport;
+        private System.Windows.Forms.Label lblFrom;
+        private System.Windows.Forms.DateTimePicker dtpFrom;
+        private System.Windows.Forms.ProgressBar prgExport;
+        private System.Windows.Forms.Button btnExport;
+        private System.Windows.Forms.Label lblTo;
+        private System.Windows.Forms.DateTimePicker dtpTo;
+        private System.Windows.Forms.Label lblExportStatus;
     }
 }
