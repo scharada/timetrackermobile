@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Threading;
 using TimeTracker.Services.Contracts;
+using System.IO;
 
 namespace TimeTracker
 {
@@ -113,7 +114,7 @@ namespace TimeTracker
                 timer.Dispose();
                 timer = null;
                 this.btnStartStop.Text = "Start";
-                
+
                 SaveTask(activityGuid);
                 //new Guid(this.cmbActivities.SelectedValue.ToString())
                 this.FillGrid();
@@ -160,6 +161,77 @@ namespace TimeTracker
             {
                 activityGuid = new Guid(this.cmbActivities.SelectedValue.ToString());
             }
+        }
+
+
+        private void TabMain_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (TabMain.SelectedIndex == 2)
+            {
+                FillActivityGrid();
+            }
+        }
+
+        private void FillActivityGrid()
+        {
+            this.lvwActivity.Items.Clear();
+            IList<Activity> activities = this.taskService.GetActivities();
+
+            foreach (Activity activity in activities)
+            {
+                this.lvwActivity.Items.Add(new ListViewItem(new string[] { activity.Description }));
+            }
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            Activity activity = new Activity { Color = "", Description = this.txtCategory.Text.Trim(), Id = new Guid() };
+
+            this.taskService.AddActivity(activity);
+            this.txtCategory.Text = "";
+            FillActivityGrid();
+            FillCombo();
+        }
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            this.prgExport.Value = 0;
+            UpdateProgressStatus("Status");
+
+            IList<Task> tasks = this.taskService.GetTasksByRange(this.dtpFrom.Value.Date, this.dtpTo.Value.Date);
+            this.prgExport.Maximum = tasks.Count + 3;
+
+            this.prgExport.Value = this.prgExport.Value + 1;
+            UpdateProgressStatus("Creating file");
+
+            StreamWriter textWriter = new StreamWriter(@"Export" + DateTime.Now.Second.ToString() + ".csv", true);
+            string pc = ";";
+
+            int count = 1;
+
+            foreach (Task task in tasks)
+            {
+                textWriter.WriteLine(task.activity.Description + pc + task.DatetimeFrom + pc + task.DatetimeTo + pc + task.Diff);
+
+                this.prgExport.Value = this.prgExport.Value + 1;
+                UpdateProgressStatus("Exporting tasks " + count.ToString() + " / " + tasks.Count.ToString());
+                count = count + 1;
+            }
+
+            this.prgExport.Value = this.prgExport.Value + 1;
+            UpdateProgressStatus("Closing file");
+
+            textWriter.Flush();
+            textWriter.Close();
+
+            this.prgExport.Value = this.prgExport.Value + 1;
+            UpdateProgressStatus("Done !");
+        }
+
+        private void UpdateProgressStatus(string status)
+        {
+            this.lblExportStatus.Text = status;
+            this.lblExportStatus.Refresh();
         }
     }
 }
