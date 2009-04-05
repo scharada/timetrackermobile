@@ -31,6 +31,11 @@ namespace TimeTracker.Services
             return this.dataAccess.GetTasksByDay(day);
         }
 
+        public IList<Task> GetTasksByRange(DateTime from, DateTime to)
+        {
+            return this.dataAccess.GetTasksByRange(from, to);
+        }
+
         public void AddActivity(Activity activity)
         {
             this.dataAccess.AddActivity(activity);
