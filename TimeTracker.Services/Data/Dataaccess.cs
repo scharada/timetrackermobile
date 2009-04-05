@@ -103,5 +103,33 @@ namespace TimeTracker.Services.Data
 
             return tasks;
         }
+
+        public IList<Task> GetTasksByRange(DateTime from, DateTime to)
+        {
+            List<Task> tasks = new List<Task>();
+            string formatedDayFrom = from.Year.ToString() + "-" + from.Month.ToString().PadLeft(2, '0') + "-" + from.Day.ToString().PadLeft(2, '0');
+            string formatedDayTo = to.Year.ToString() + "-" + to.Month.ToString().PadLeft(2, '0') + "-" + to.Day.ToString().PadLeft(2, '0');
+
+            SqlCeCommand comm = new SqlCeCommand("SELECT T.Id, T.ActivityId, T.DatetimeFrom, T.DatetimeTo, T.Diff, A.Description FROM Tasks T INNER JOIN Activities A ON A.Id = T.ActivityId WHERE CONVERT(nvarchar(10),DatetimeFrom,120) >= '" + formatedDayFrom + "' AND CONVERT(nvarchar(10),DatetimeFrom,120) <= '" + formatedDayTo + "'");
+            comm.Connection = this.conn;
+            SqlCeDataReader myReader = comm.ExecuteReader();
+
+            while (myReader.Read())
+            {
+                Activity activity = new Activity { Id = myReader.GetGuid(1), Description = myReader.GetString(5) };
+                tasks.Add(new Task
+                {
+                    Id = myReader.GetGuid(0),
+                    ActivityId = myReader.GetGuid(1),
+                    DatetimeFrom = myReader.GetDateTime(2),
+                    DatetimeTo = myReader.GetDateTime(3),
+                    Diff = myReader.GetInt32(4),
+                    activity = activity
+                });
+            }
+            myReader.Close();
+
+            return tasks;
+        }
     }
 }
