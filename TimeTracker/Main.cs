@@ -34,6 +34,7 @@ namespace TimeTracker
 
         private void Main_Load(object sender, EventArgs e)
         {
+            lvwTasks.Activation = ItemActivation.Standard;
             this.taskService = new TimeTracker.Services.TaskService();
 
             myDelegate = new ChangeTime(ChangeTimeMethod);
@@ -63,10 +64,14 @@ namespace TimeTracker
 
             foreach (Task task in tasks)
             {
-                this.lvwTasks.Items.Add(new ListViewItem(new string[]{ task.activity.Description, 
+                ListViewItem item = new ListViewItem(new string[]{ task.activity.Description, 
                     task.DatetimeFrom.ToString("HH:mm tt"),
                     task.DatetimeTo.ToString("HH:mm tt"), 
-                    SecondsToDiff(task.Diff)}));
+                    SecondsToDiff(task.Diff)});
+
+                    item.Tag = task.Id;
+
+                this.lvwTasks.Items.Add(item);
                 total = total + task.Diff;
             }
             this.lblTotal.Text = SecondsToDiff(total);
@@ -232,6 +237,25 @@ namespace TimeTracker
         {
             this.lblExportStatus.Text = status;
             this.lblExportStatus.Refresh();
+        }
+
+        private void lvwTasks_ItemActivate(object sender, EventArgs e)
+        {
+            if (lvwTasks.SelectedIndices.Count > 0)
+            {
+                Task task = this.taskService.GetTask(new Guid( this.lvwTasks.Items[this.lvwTasks.SelectedIndices[0]].Tag.ToString()));
+
+                TaskForm taskForm = new TaskForm();
+                taskForm.Task = task;
+
+                taskForm.ShowDialog();
+
+                if (taskForm.DialogResult == DialogResult.Yes)
+                {
+                    this.FillGrid();
+                }
+
+            }
         }
     }
 }

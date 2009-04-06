@@ -53,14 +53,14 @@
             this.lvwActivity = new System.Windows.Forms.ListView();
             this.colCategory = new System.Windows.Forms.ColumnHeader();
             this.tabPageExport = new System.Windows.Forms.TabPage();
+            this.lblExportStatus = new System.Windows.Forms.Label();
+            this.prgExport = new System.Windows.Forms.ProgressBar();
+            this.btnExport = new System.Windows.Forms.Button();
+            this.lblTo = new System.Windows.Forms.Label();
+            this.dtpTo = new System.Windows.Forms.DateTimePicker();
             this.lblFrom = new System.Windows.Forms.Label();
             this.dtpFrom = new System.Windows.Forms.DateTimePicker();
             this.tabPageAbout = new System.Windows.Forms.TabPage();
-            this.lblTo = new System.Windows.Forms.Label();
-            this.dtpTo = new System.Windows.Forms.DateTimePicker();
-            this.btnExport = new System.Windows.Forms.Button();
-            this.prgExport = new System.Windows.Forms.ProgressBar();
-            this.lblExportStatus = new System.Windows.Forms.Label();
             this.TabMain.SuspendLayout();
             this.tabPageTasks.SuspendLayout();
             this.tabPageSettings.SuspendLayout();
@@ -158,6 +158,7 @@
             this.lvwTasks.Size = new System.Drawing.Size(240, 130);
             this.lvwTasks.TabIndex = 3;
             this.lvwTasks.View = System.Windows.Forms.View.Details;
+            this.lvwTasks.ItemActivate += new System.EventHandler(this.lvwTasks_ItemActivate);
             // 
             // colActivity
             // 
@@ -269,8 +270,46 @@
             this.tabPageExport.Controls.Add(this.dtpFrom);
             this.tabPageExport.Location = new System.Drawing.Point(0, 0);
             this.tabPageExport.Name = "tabPageExport";
-            this.tabPageExport.Size = new System.Drawing.Size(240, 244);
+            this.tabPageExport.Size = new System.Drawing.Size(232, 241);
             this.tabPageExport.Text = "Export";
+            // 
+            // lblExportStatus
+            // 
+            this.lblExportStatus.Location = new System.Drawing.Point(70, 122);
+            this.lblExportStatus.Name = "lblExportStatus";
+            this.lblExportStatus.Size = new System.Drawing.Size(128, 20);
+            this.lblExportStatus.Text = "Status";
+            this.lblExportStatus.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // prgExport
+            // 
+            this.prgExport.Location = new System.Drawing.Point(17, 101);
+            this.prgExport.Name = "prgExport";
+            this.prgExport.Size = new System.Drawing.Size(181, 20);
+            // 
+            // btnExport
+            // 
+            this.btnExport.Location = new System.Drawing.Point(126, 172);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(72, 20);
+            this.btnExport.TabIndex = 4;
+            this.btnExport.Text = "Export";
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            // 
+            // lblTo
+            // 
+            this.lblTo.Location = new System.Drawing.Point(126, 8);
+            this.lblTo.Name = "lblTo";
+            this.lblTo.Size = new System.Drawing.Size(100, 20);
+            this.lblTo.Text = "To";
+            // 
+            // dtpTo
+            // 
+            this.dtpTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpTo.Location = new System.Drawing.Point(123, 29);
+            this.dtpTo.Name = "dtpTo";
+            this.dtpTo.Size = new System.Drawing.Size(75, 22);
+            this.dtpTo.TabIndex = 2;
             // 
             // lblFrom
             // 
@@ -293,44 +332,6 @@
             this.tabPageAbout.Name = "tabPageAbout";
             this.tabPageAbout.Size = new System.Drawing.Size(232, 241);
             this.tabPageAbout.Text = "About";
-            // 
-            // lblTo
-            // 
-            this.lblTo.Location = new System.Drawing.Point(126, 8);
-            this.lblTo.Name = "lblTo";
-            this.lblTo.Size = new System.Drawing.Size(100, 20);
-            this.lblTo.Text = "To";
-            // 
-            // dtpTo
-            // 
-            this.dtpTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpTo.Location = new System.Drawing.Point(123, 29);
-            this.dtpTo.Name = "dtpTo";
-            this.dtpTo.Size = new System.Drawing.Size(75, 22);
-            this.dtpTo.TabIndex = 2;
-            // 
-            // btnExport
-            // 
-            this.btnExport.Location = new System.Drawing.Point(126, 172);
-            this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(72, 20);
-            this.btnExport.TabIndex = 4;
-            this.btnExport.Text = "Export";
-            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
-            // 
-            // prgExport
-            // 
-            this.prgExport.Location = new System.Drawing.Point(17, 101);
-            this.prgExport.Name = "prgExport";
-            this.prgExport.Size = new System.Drawing.Size(181, 20);
-            // 
-            // lblExportStatus
-            // 
-            this.lblExportStatus.Location = new System.Drawing.Point(70, 122);
-            this.lblExportStatus.Name = "lblExportStatus";
-            this.lblExportStatus.Size = new System.Drawing.Size(128, 20);
-            this.lblExportStatus.Text = "Status";
-            this.lblExportStatus.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // Main
             // 
