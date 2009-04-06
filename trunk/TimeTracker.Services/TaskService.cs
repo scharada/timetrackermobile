@@ -21,6 +21,11 @@ namespace TimeTracker.Services
             return this.dataAccess.GetActivities();
         }
 
+        public Task GetTask(Guid id)
+        {
+            return this.dataAccess.GetTask(id);
+        }
+
         public IList<Task> GetTasks()
         {
             return this.dataAccess.GetTasks();
@@ -44,6 +49,11 @@ namespace TimeTracker.Services
         public void AddTask(Task task)
         {
             this.dataAccess.AddTask(task);
+        }
+
+        public void UpdateTask(Task task)
+        {
+            this.dataAccess.UpdateTask(task);
         }
 
     }
