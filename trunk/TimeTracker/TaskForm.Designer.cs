@@ -33,17 +33,17 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.lblActivity = new System.Windows.Forms.Label();
             this.cmbActivities = new System.Windows.Forms.ComboBox();
-            this.txtFrom = new System.Windows.Forms.TextBox();
-            this.txtTo = new System.Windows.Forms.TextBox();
             this.lblFrom = new System.Windows.Forms.Label();
             this.lblTo = new System.Windows.Forms.Label();
             this.lblElapsed = new System.Windows.Forms.Label();
             this.txtElapsed = new System.Windows.Forms.TextBox();
+            this.txtFrom = new System.Windows.Forms.DateTimePicker();
+            this.txtTo = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(132, 190);
+            this.btnSave.Location = new System.Drawing.Point(145, 189);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(72, 20);
             this.btnSave.TabIndex = 0;
@@ -61,24 +61,8 @@
             // 
             this.cmbActivities.Location = new System.Drawing.Point(74, 14);
             this.cmbActivities.Name = "cmbActivities";
-            this.cmbActivities.Size = new System.Drawing.Size(100, 22);
+            this.cmbActivities.Size = new System.Drawing.Size(143, 22);
             this.cmbActivities.TabIndex = 2;
-            // 
-            // txtFrom
-            // 
-            this.txtFrom.Location = new System.Drawing.Point(74, 55);
-            this.txtFrom.Name = "txtFrom";
-            this.txtFrom.ReadOnly = true;
-            this.txtFrom.Size = new System.Drawing.Size(100, 21);
-            this.txtFrom.TabIndex = 3;
-            // 
-            // txtTo
-            // 
-            this.txtTo.Location = new System.Drawing.Point(74, 98);
-            this.txtTo.Name = "txtTo";
-            this.txtTo.ReadOnly = true;
-            this.txtTo.Size = new System.Drawing.Size(100, 21);
-            this.txtTo.TabIndex = 4;
             // 
             // lblFrom
             // 
@@ -109,18 +93,36 @@
             this.txtElapsed.Size = new System.Drawing.Size(100, 21);
             this.txtElapsed.TabIndex = 10;
             // 
+            // txtFrom
+            // 
+            this.txtFrom.CustomFormat = "dd/MM/yy hh:mm:ss";
+            this.txtFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.txtFrom.Location = new System.Drawing.Point(75, 52);
+            this.txtFrom.Name = "txtFrom";
+            this.txtFrom.Size = new System.Drawing.Size(142, 22);
+            this.txtFrom.TabIndex = 14;
+            // 
+            // txtTo
+            // 
+            this.txtTo.CustomFormat = "dd/MM/yy hh:mm:ss";
+            this.txtTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.txtTo.Location = new System.Drawing.Point(74, 96);
+            this.txtTo.Name = "txtTo";
+            this.txtTo.Size = new System.Drawing.Size(143, 22);
+            this.txtTo.TabIndex = 15;
+            // 
             // TaskForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(240, 268);
+            this.Controls.Add(this.txtTo);
+            this.Controls.Add(this.txtFrom);
             this.Controls.Add(this.lblElapsed);
             this.Controls.Add(this.txtElapsed);
             this.Controls.Add(this.lblTo);
             this.Controls.Add(this.lblFrom);
-            this.Controls.Add(this.txtTo);
-            this.Controls.Add(this.txtFrom);
             this.Controls.Add(this.cmbActivities);
             this.Controls.Add(this.lblActivity);
             this.Controls.Add(this.btnSave);
@@ -137,11 +139,11 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label lblActivity;
         private System.Windows.Forms.ComboBox cmbActivities;
-        private System.Windows.Forms.TextBox txtFrom;
-        private System.Windows.Forms.TextBox txtTo;
         private System.Windows.Forms.Label lblFrom;
         private System.Windows.Forms.Label lblTo;
         private System.Windows.Forms.Label lblElapsed;
         private System.Windows.Forms.TextBox txtElapsed;
+        private System.Windows.Forms.DateTimePicker txtFrom;
+        private System.Windows.Forms.DateTimePicker txtTo;
     }
 }

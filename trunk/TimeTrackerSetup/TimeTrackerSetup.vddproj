@@ -347,7 +347,7 @@
             "{E4F2F62A-3940-4BF5-A031-F7FA98CAAFFA}:_4DF80B4BE57448C5F3F23FACC6AFE04C"
             {
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:TimeTracker.Services, Version=1.0.3379.438, Culture=neutral"
+            "AssemblyAsmDisplayName" = "8:TimeTracker.Services, Version=1.0.3382.39747, Culture=neutral"
                 "ScatterAssemblies"
                 {
                     "_4DF80B4BE57448C5F3F23FACC6AFE04C"
@@ -649,8 +649,8 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:TimeTrackerSetup"
-        "Manufacturer" = "8:Default Company Name"
+        "ProductName" = "8:TimeTracker"
+        "Manufacturer" = "8:Renzi"
         "OSVersionMin" = "8:4.0"
         "OSVersionMax" = "8:6.99"
         "NoUninstall" = "11:FALSE"

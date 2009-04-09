@@ -2,11 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Data;
-    using System.Data.SqlClient;
     using System.Data.SqlServerCe;
-    using System.Linq;
-    using System.Text;
     using TimeTracker.Services.Contracts;
     using TimeTracker.Services.Providers;
 
@@ -63,7 +59,10 @@
             using (var command = DBConnectionProvider.Current.CreateCommand())
             {
                 command.CommandType = System.Data.CommandType.Text;
-                command.CommandText = "UPDATE Tasks SET ActivityId ='" + task.ActivityId + "' WHERE Id = '" + task.Id + "'";
+                command.CommandText = "UPDATE Tasks SET ActivityId ='" + task.ActivityId + 
+                    "', DatetimeFrom = '" + task.DatetimeFrom + "', DatetimeTo = '" + task.DatetimeTo + 
+                    "', Diff = " + task.Diff + " WHERE Id = '" + task.Id + "'";
+
                 command.ExecuteNonQuery();
             }
         }

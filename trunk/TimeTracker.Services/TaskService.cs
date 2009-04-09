@@ -53,6 +53,10 @@ namespace TimeTracker.Services
 
         public void UpdateTask(Task task)
         {
+            TimeSpan timeSpan = new TimeSpan();
+            timeSpan = task.DatetimeTo - task.DatetimeFrom;
+            task.Diff = timeSpan.Seconds;
+
             this.dataAccess.UpdateTask(task);
         }
 
