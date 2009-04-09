@@ -243,10 +243,12 @@ namespace TimeTracker
         {
             if (lvwTasks.SelectedIndices.Count > 0)
             {
-                Task task = this.taskService.GetTask(new Guid( this.lvwTasks.Items[this.lvwTasks.SelectedIndices[0]].Tag.ToString()));
+                //Task task = this.taskService.GetTask(new Guid( this.lvwTasks.Items[this.lvwTasks.SelectedIndices[0]].Tag.ToString()));
 
                 TaskForm taskForm = new TaskForm();
-                taskForm.Task = task;
+                Controllers.TaskController taskController = new TimeTracker.Controllers.TaskController(taskForm);
+                //taskForm.Task = task;
+                taskForm.TaskId = new Guid(this.lvwTasks.Items[this.lvwTasks.SelectedIndices[0]].Tag.ToString());
 
                 taskForm.ShowDialog();
 
