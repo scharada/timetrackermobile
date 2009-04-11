@@ -21,6 +21,12 @@
         "Entry"
         {
         "MsmKey" = "8:_0E2D0A11E6BC6BF2CE4C3C3D27202A42"
+        "OwnerKey" = "8:_CF88FBCB619B05494D1EAAE671B455FF"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_0E2D0A11E6BC6BF2CE4C3C3D27202A42"
         "OwnerKey" = "8:_8469B95C539D5598EEDB17EA35AB09C7"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -110,6 +116,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_8469B95C539D5598EEDB17EA35AB09C7"
+        "OwnerKey" = "8:_CF88FBCB619B05494D1EAAE671B455FF"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_BBDDFB7F71BC281F6055879116C4D900"
         "OwnerKey" = "8:_2B4CE9B708DF49BFA9235068DCDF211A"
         "MsmSig" = "8:_UNDEFINED"
@@ -118,6 +130,12 @@
         {
         "MsmKey" = "8:_BBDDFB7F71BC281F6055879116C4D900"
         "OwnerKey" = "8:_4DF80B4BE57448C5F3F23FACC6AFE04C"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_CF88FBCB619B05494D1EAAE671B455FF"
+        "OwnerKey" = "8:_2B4CE9B708DF49BFA9235068DCDF211A"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -160,6 +178,12 @@
         {
         "MsmKey" = "8:_DAADA4E38707F449CC52DF371DEADCA5"
         "OwnerKey" = "8:_BBDDFB7F71BC281F6055879116C4D900"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_DAADA4E38707F449CC52DF371DEADCA5"
+        "OwnerKey" = "8:_CF88FBCB619B05494D1EAAE671B455FF"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -214,6 +238,12 @@
         {
         "MsmKey" = "8:_FCAD1DE995A3DD9AA7BF753976C8E89A"
         "OwnerKey" = "8:_2B4CE9B708DF49BFA9235068DCDF211A"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_FCAD1DE995A3DD9AA7BF753976C8E89A"
+        "OwnerKey" = "8:_CF88FBCB619B05494D1EAAE671B455FF"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -347,7 +377,7 @@
             "{E4F2F62A-3940-4BF5-A031-F7FA98CAAFFA}:_4DF80B4BE57448C5F3F23FACC6AFE04C"
             {
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:TimeTracker.Services, Version=1.0.3382.39747, Culture=neutral"
+            "AssemblyAsmDisplayName" = "8:TimeTracker.Services, Version=1.0.3387.41686, Culture=neutral"
                 "ScatterAssemblies"
                 {
                     "_4DF80B4BE57448C5F3F23FACC6AFE04C"
@@ -487,7 +517,7 @@
             "{E4F2F62A-3940-4BF5-A031-F7FA98CAAFFA}:_BBDDFB7F71BC281F6055879116C4D900"
             {
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:TimeTracker.Services.Contracts, Version=1.0.3379.435, Culture=neutral"
+            "AssemblyAsmDisplayName" = "8:TimeTracker.Services.Contracts, Version=1.0.3387.41684, Culture=neutral"
                 "ScatterAssemblies"
                 {
                     "_BBDDFB7F71BC281F6055879116C4D900"
@@ -512,12 +542,40 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{E4F2F62A-3940-4BF5-A031-F7FA98CAAFFA}:_CF88FBCB619B05494D1EAAE671B455FF"
+            {
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:System.Mobile.Mvc, Version=1.0.3297.40339, Culture=neutral"
+                "ScatterAssemblies"
+                {
+                    "_CF88FBCB619B05494D1EAAE671B455FF"
+                    {
+                    "Name" = "8:System.Mobile.Mvc.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:System.Mobile.Mvc.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_3A7545698ABB471B9115C909782C45CE"
+            "Condition" = "8:"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "Register" = "3:0"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{BA458234-9B71-4F46-8107-E91156377184}:_D113A66F23DD497FB3A57116CCDD6222"
             {
             "SourcePath" = "8:..\\TimeTracker.Services\\Data\\Store.sdf"
             "TargetName" = "8:Store.sdf"
             "Tag" = "8:"
-            "Folder" = "8:_F6108C493C5744F2A6B7BA79F7737C37"
+            "Folder" = "8:_DBB98CFC0027482AA7158A882EAA35C9"
             "Condition" = "8:"
             "Vital" = "11:TRUE"
             "ReadOnly" = "11:FALSE"
@@ -634,7 +692,7 @@
             "Property" = "8:%InstallDir%"
                 "Folders"
                 {
-                    "{5943FCFD-5B64-4EE4-96C9-4618EC95352A}:_F6108C493C5744F2A6B7BA79F7737C37"
+                    "{5943FCFD-5B64-4EE4-96C9-4618EC95352A}:_DBB98CFC0027482AA7158A882EAA35C9"
                     {
                     "Name" = "8:Data"
                     "Condition" = "8:"
@@ -643,6 +701,15 @@
                         {
                         }
                     }
+                }
+            }
+            "{F6DFDB62-1DD1-498B-89B7-27BAC542EE5A}:_FE83D24795CB4EF0BAC8E34DE3B80684"
+            {
+            "Name" = "8:#1919"
+            "Condition" = "8:"
+            "Property" = "8:%CE17%"
+                "Folders"
+                {
                 }
             }
         }
@@ -721,6 +788,16 @@
         }
         "Shortcut"
         {
+            "{971D45E9-E38C-49AC-B36E-4C5BEA533350}:_56628D6355E447F9A3921CCE5B0EBD45"
+            {
+            "Name" = "8:Time Tracker"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "Target" = "8:_2B4CE9B708DF49BFA9235068DCDF211A"
+            "Folder" = "8:_FE83D24795CB4EF0BAC8E34DE3B80684"
+            "WorkingFolder" = "8:_3A7545698ABB471B9115C909782C45CE"
+            }
         }
     }
 }
