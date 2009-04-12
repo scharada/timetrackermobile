@@ -18,12 +18,12 @@
         private void TaskForm_Load(object sender, System.EventArgs e)
         {
             this.ViewData["taskId"] = this.TaskId;
-            this.OnViewStateChanged("FillForm");
+            this.OnViewStateChanged("FillTaskForm");
         }
 
         protected override void OnUpdateView(string key)
         {
-            if (key == "FillForm")
+            if (key == "FillTaskForm")
             {
                 this.cmbActivities.DisplayMember = "Description";
                 this.cmbActivities.ValueMember = "Id";

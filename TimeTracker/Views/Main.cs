@@ -1,18 +1,14 @@
-﻿using System;
-using System.Linq;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
-using System.Threading;
-using TimeTracker.Services.Contracts;
-using System.IO;
-
-namespace TimeTracker
+﻿namespace TimeTracker
 {
-    public partial class Main : Form
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Mobile.Mvc;
+    using System.Threading;
+    using System.Windows.Forms;
+    using TimeTracker.Services.Contracts;
+
+    public partial class Main : ViewForm, IView<Task>
     {
 
         public Main()
@@ -25,7 +21,6 @@ namespace TimeTracker
         private System.Threading.Timer timer;
         private DateTime start;
         private DateTime now;
-        private DateTime today;
         private Guid activityGuid;
 
         public delegate void ChangeTime();
@@ -39,20 +34,37 @@ namespace TimeTracker
 
             myDelegate = new ChangeTime(ChangeTimeMethod);
 
-            today = DateTime.Now.Date;
+            this.ViewData["today"] = DateTime.Now.Date;
 
-            this.lblDate.Text = today.ToLongDateString();
-            FillCombo();
-            FillGrid();
+            this.lblDate.Text = ((DateTime)this.ViewData["today"]).ToLongDateString();
+
+            this.OnViewStateChanged("FillActivitiesCombo");
+            this.OnViewStateChanged("FillGrid");
         }
 
-        private void FillCombo()
+        protected override void OnUpdateView(string key)
         {
-            IList<Activity> activities = this.taskService.GetActivities();
-
-            cmbActivities.DisplayMember = "Description";
-            cmbActivities.ValueMember = "Id";
-            cmbActivities.DataSource = activities;
+            switch (key)
+            {
+                case "FillGrid":
+                    this.FillGrid();
+                    break;
+                case "FillActivitiesCombo":
+                    this.cmbActivities.DisplayMember = "Description";
+                    this.cmbActivities.ValueMember = "Id";
+                    this.cmbActivities.DataSource = (List<Activity>)this.ViewData["activities"];
+                    break;
+                case "DatePrev":
+                    this.lblDate.Text = ((DateTime)this.ViewData["today"]).ToLongDateString();
+                    this.FillGrid();
+                    break;
+                case "DatePost":
+                    this.lblDate.Text = ((DateTime)this.ViewData["today"]).ToLongDateString();
+                    this.FillGrid();
+                    break;
+                default:
+                    break;
+            }
         }
 
         private void FillGrid()
@@ -60,17 +72,16 @@ namespace TimeTracker
             this.lvwTasks.Items.Clear();
             int total = 0;
 
-            IList<Task> tasks = this.taskService.GetTasksByDay(today);
+            IList<Task> tasks = (List<Task>)this.ViewData["tasksByDay"];
 
             foreach (Task task in tasks)
             {
                 ListViewItem item = new ListViewItem(new string[]{ task.activity.Description, 
-                    task.DatetimeFrom.ToString("HH:mm tt"),
-                    task.DatetimeTo.ToString("HH:mm tt"), 
-                    SecondsToDiff(task.Diff)});
+                        task.DatetimeFrom.ToString("HH:mm tt"),
+                        task.DatetimeTo.ToString("HH:mm tt"), 
+                        SecondsToDiff(task.Diff)});
 
-                    item.Tag = task.Id;
-
+                item.Tag = task.Id;
                 this.lvwTasks.Items.Add(item);
                 total = total + task.Diff;
             }
@@ -122,7 +133,7 @@ namespace TimeTracker
 
                 SaveTask(activityGuid);
                 //new Guid(this.cmbActivities.SelectedValue.ToString())
-                this.FillGrid();
+                this.OnViewStateChanged("FillGrid");
             }
         }
 
@@ -141,16 +152,12 @@ namespace TimeTracker
 
         private void lblDatePost_Click(object sender, EventArgs e)
         {
-            today = today.AddDays(1);
-            this.lblDate.Text = today.ToLongDateString();
-            this.FillGrid();
+            this.OnViewStateChanged("DatePost");
         }
 
         private void lblDatePrev_Click(object sender, EventArgs e)
         {
-            today = today.AddDays(-1);
-            this.lblDate.Text = today.ToLongDateString();
-            this.FillGrid();
+            this.OnViewStateChanged("DatePrev");
         }
 
         private void cmbActivities_SelectedIndexChanged(object sender, EventArgs e)
@@ -167,7 +174,6 @@ namespace TimeTracker
                 activityGuid = new Guid(this.cmbActivities.SelectedValue.ToString());
             }
         }
-
 
         private void TabMain_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -195,69 +201,62 @@ namespace TimeTracker
             this.taskService.AddActivity(activity);
             this.txtCategory.Text = "";
             FillActivityGrid();
-            FillCombo();
+            this.OnViewStateChanged("FillActivitiesCombo");
         }
 
         private void btnExport_Click(object sender, EventArgs e)
         {
             this.prgExport.Value = 0;
-            UpdateProgressStatus("Status");
+            this.lblExportStatus.Text = "Status";
 
-            IList<Task> tasks = this.taskService.GetTasksByRange(this.dtpFrom.Value.Date, this.dtpTo.Value.Date);
-            this.prgExport.Maximum = tasks.Count + 3;
+            this.ViewData["ExportFrom"] = this.dtpFrom.Value;
+            this.ViewData["ExportTo"] = this.dtpTo.Value;
 
-            this.prgExport.Value = this.prgExport.Value + 1;
-            UpdateProgressStatus("Creating file");
-
-            StreamWriter textWriter = new StreamWriter(@"Export" + DateTime.Now.Second.ToString() + ".csv", true);
-            string pc = ";";
-
-            int count = 1;
-
-            foreach (Task task in tasks)
-            {
-                textWriter.WriteLine(task.activity.Description + pc + task.DatetimeFrom + pc + task.DatetimeTo + pc + task.Diff);
-
-                this.prgExport.Value = this.prgExport.Value + 1;
-                UpdateProgressStatus("Exporting tasks " + count.ToString() + " / " + tasks.Count.ToString());
-                count = count + 1;
-            }
-
-            this.prgExport.Value = this.prgExport.Value + 1;
-            UpdateProgressStatus("Closing file");
-
-            textWriter.Flush();
-            textWriter.Close();
-
-            this.prgExport.Value = this.prgExport.Value + 1;
-            UpdateProgressStatus("Done !");
+            this.OnViewStateChanged("ExportTasks");
         }
 
-        private void UpdateProgressStatus(string status)
+        private void OnExportStatusUpdated(object sender, DataEventArgs<string> e)
         {
-            this.lblExportStatus.Text = status;
+            this.prgExport.Value = this.prgExport.Value + 1;
+            this.lblExportStatus.Text = e.Value;
             this.lblExportStatus.Refresh();
         }
 
-        private void lvwTasks_ItemActivate(object sender, EventArgs e)
+        private void OnTasksCount(object sender, DataEventArgs<int> e)
+        {
+            this.prgExport.Maximum = e.Value;
+        }
+
+         private void lvwTasks_ItemActivate(object sender, EventArgs e)
         {
             if (lvwTasks.SelectedIndices.Count > 0)
             {
-                //Task task = this.taskService.GetTask(new Guid( this.lvwTasks.Items[this.lvwTasks.SelectedIndices[0]].Tag.ToString()));
-
                 TaskForm taskForm = new TaskForm();
                 Controllers.TaskController taskController = new TimeTracker.Controllers.TaskController(taskForm);
-                //taskForm.Task = task;
                 taskForm.TaskId = new Guid(this.lvwTasks.Items[this.lvwTasks.SelectedIndices[0]].Tag.ToString());
 
                 taskForm.ShowDialog();
 
                 if (taskForm.DialogResult == DialogResult.Yes)
                 {
-                    this.FillGrid();
+                    this.OnViewStateChanged("FillGrid");
                 }
-
             }
         }
+        #region IView<Task> Members
+
+        public new Task Model
+        {
+            get;
+            set;
+        }
+
+        public new ViewDataDictionary<Task> ViewData
+        {
+            get;
+            set;
+        }
+
+        #endregion
     }
 }
