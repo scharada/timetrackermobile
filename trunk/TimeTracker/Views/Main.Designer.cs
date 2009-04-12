@@ -29,6 +29,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.mainMenu1 = new System.Windows.Forms.MainMenu();
             this.TabMain = new System.Windows.Forms.TabControl();
             this.tabPageTasks = new System.Windows.Forms.TabPage();
@@ -340,6 +341,7 @@
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(240, 268);
             this.Controls.Add(this.TabMain);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Menu = this.mainMenu1;
             this.Name = "Main";
             this.Text = "Time Tracker";
