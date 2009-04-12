@@ -1,10 +1,9 @@
-﻿using System;
-using System.Linq;
-using System.Collections.Generic;
-using System.Windows.Forms;
-
-namespace TimeTracker
+﻿namespace TimeTracker
 {
+    using System;
+    using System.Windows.Forms;
+    using TimeTracker.Controllers;
+
     static class Program
     {
         /// <summary>
@@ -13,7 +12,9 @@ namespace TimeTracker
         [MTAThread]
         static void Main()
         {
-            Application.Run(new Main());
+            Main form = new Main();
+            TaskController controller = new TaskController(form);
+            Application.Run(form);
         }
     }
 }

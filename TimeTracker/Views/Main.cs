@@ -25,8 +25,7 @@
 
         public delegate void ChangeTime();
         public ChangeTime myDelegate;
-
-
+        
         private void Main_Load(object sender, EventArgs e)
         {
             lvwTasks.Activation = ItemActivation.Standard;
@@ -227,7 +226,7 @@
             this.prgExport.Maximum = e.Value;
         }
 
-         private void lvwTasks_ItemActivate(object sender, EventArgs e)
+        private void lvwTasks_ItemActivate(object sender, EventArgs e)
         {
             if (lvwTasks.SelectedIndices.Count > 0)
             {
