@@ -1,4 +1,4 @@
 0.2.0.0
 * Change Export feature to MVC pproach
 * Add Exports folder to CAB installer
-* 
+* Move forms to View folder

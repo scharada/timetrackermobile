@@ -377,7 +377,7 @@
             "{E4F2F62A-3940-4BF5-A031-F7FA98CAAFFA}:_4DF80B4BE57448C5F3F23FACC6AFE04C"
             {
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:TimeTracker.Services, Version=1.0.3387.41686, Culture=neutral"
+            "AssemblyAsmDisplayName" = "8:TimeTracker.Services, Version=1.0.3387.41784, Culture=neutral"
                 "ScatterAssemblies"
                 {
                     "_4DF80B4BE57448C5F3F23FACC6AFE04C"
@@ -517,7 +517,7 @@
             "{E4F2F62A-3940-4BF5-A031-F7FA98CAAFFA}:_BBDDFB7F71BC281F6055879116C4D900"
             {
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:TimeTracker.Services.Contracts, Version=1.0.3387.41684, Culture=neutral"
+            "AssemblyAsmDisplayName" = "8:TimeTracker.Services.Contracts, Version=1.0.3387.41781, Culture=neutral"
                 "ScatterAssemblies"
                 {
                     "_BBDDFB7F71BC281F6055879116C4D900"
@@ -692,6 +692,15 @@
             "Property" = "8:%InstallDir%"
                 "Folders"
                 {
+                    "{5943FCFD-5B64-4EE4-96C9-4618EC95352A}:_3187265172534A419B84B31740EF07B2"
+                    {
+                    "Name" = "8:Exports"
+                    "Condition" = "8:"
+                    "Property" = "8:_A3C79ECC09EC49BCB2A9DE40EC4A08FD"
+                        "Folders"
+                        {
+                        }
+                    }
                     "{5943FCFD-5B64-4EE4-96C9-4618EC95352A}:_DBB98CFC0027482AA7158A882EAA35C9"
                     {
                     "Name" = "8:Data"
