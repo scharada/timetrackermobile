@@ -16,20 +16,18 @@
             InitializeComponent();
         }
 
-        private bool running = false;
-        private TimeTracker.Services.TaskService taskService { get; set; }
-        private System.Threading.Timer timer;
-        private DateTime start;
-        private DateTime now;
-        private Guid activityGuid;
+        [PublishEvent("OnStartStop")]
+        public event EventHandler OnStartStopEvent;
 
-        public delegate void ChangeTime();
+        [PublishEvent("OnActivityComboIndexSelectedChanged")]
+        public event EventHandler<DataEventArgs<Guid>> OnActivityComboIndexSelectedChangedEvent;
+
+        public delegate void ChangeTime(string time);
         public ChangeTime myDelegate;
-        
+
         private void Main_Load(object sender, EventArgs e)
         {
             lvwTasks.Activation = ItemActivation.Standard;
-            this.taskService = new TimeTracker.Services.TaskService();
 
             myDelegate = new ChangeTime(ChangeTimeMethod);
 
@@ -41,12 +39,29 @@
             this.OnViewStateChanged("FillGrid");
         }
 
+        private void OnTaskStoped(object sender, EventArgs e)
+        {
+            this.OnViewStateChanged("FillGrid");
+        }
+
+        private void OnTaskElapsedTimeUpdated(object sender, DataEventArgs<string> e)
+        {
+            this.Invoke(myDelegate, e.Value.ToString());
+        }
+
+        private void OnTaskStarted(object sender, EventArgs e)
+        {
+            lblStart.Text = DateTime.Now.ToShortTimeString();
+        }
         protected override void OnUpdateView(string key)
         {
             switch (key)
             {
                 case "FillGrid":
                     this.FillGrid();
+                    break;
+                case "FillActivityGrid":
+                    this.FillActivityGrid();
                     break;
                 case "FillActivitiesCombo":
                     this.cmbActivities.DisplayMember = "Description";
@@ -63,6 +78,68 @@
                     break;
                 default:
                     break;
+            }
+        }
+
+        public void ChangeTimeMethod(string time)
+        {
+            lblStop.Text = time;
+        }
+
+        private string SecondsToDiff(int diff)
+        {
+            int hours, minutes, seconds, total;
+            total = diff;
+
+            hours = total / 3600;
+            total = total - (hours * 3600);
+            minutes = total / 60;
+            total = total - minutes * 60;
+            seconds = total;
+
+            return String.Format("{0}:{1}:{2}", hours.ToString().PadLeft(2, '0'), minutes.ToString().PadLeft(2, '0'), seconds.ToString().PadLeft(2, '0'));
+        }
+
+        private void btnStartStop_Click(object sender, EventArgs e)
+        {
+            if (OnStartStopEvent != null)
+            {
+                OnStartStopEvent(this, new EventArgs());
+            }
+
+            if (this.btnStartStop.Text == "Stop")
+            {
+                this.btnStartStop.Text = "Start";
+            }
+            else
+            {
+                this.btnStartStop.Text = "Stop";
+            }
+        }
+
+        private void lblDatePost_Click(object sender, EventArgs e)
+        {
+            this.OnViewStateChanged("DatePost");
+        }
+
+        private void lblDatePrev_Click(object sender, EventArgs e)
+        {
+            this.OnViewStateChanged("DatePrev");
+        }
+
+        private void cmbActivities_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (OnActivityComboIndexSelectedChangedEvent != null)
+            {
+                OnActivityComboIndexSelectedChangedEvent(this, new DataEventArgs<Guid>(new Guid(this.cmbActivities.SelectedValue.ToString())));
+            }
+        }
+
+        private void TabMain_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (TabMain.SelectedIndex == 2)
+            {
+                FillActivityGrid();
             }
         }
 
@@ -87,105 +164,10 @@
             this.lblTotal.Text = SecondsToDiff(total);
         }
 
-        public void ChangeTimeMethod()
-        {
-            now = DateTime.Now;
-            TimeSpan timeSpan = now - start;
-            lblStop.Text = timeSpan.Hours.ToString().PadLeft(2, '0') + ":" + timeSpan.Minutes.ToString().PadLeft(2, '0') + ":" + timeSpan.Seconds.ToString().PadLeft(2, '0');
-        }
-
-        private string SecondsToDiff(int diff)
-        {
-            int hours, minutes, seconds, total;
-            total = diff;
-
-            hours = total / 3600;
-            total = total - (hours * 3600);
-            minutes = total / 60;
-            total = total - minutes * 60;
-            seconds = total;
-
-            return String.Format("{0}:{1}:{2}", hours.ToString().PadLeft(2, '0'), minutes.ToString().PadLeft(2, '0'), seconds.ToString().PadLeft(2, '0'));
-        }
-
-        public void TimerElapsed(object o)
-        {
-            this.Invoke(myDelegate);
-        }
-
-        private void btnStartStop_Click(object sender, EventArgs e)
-        {
-            if (!running)
-            {
-                running = true;
-                start = DateTime.Now;
-                timer = new System.Threading.Timer(new TimerCallback(this.TimerElapsed), null, 0, 100);
-                this.btnStartStop.Text = "Stop";
-                lblStart.Text = DateTime.Now.ToShortTimeString();
-            }
-            else
-            {
-                running = false;
-                timer.Dispose();
-                timer = null;
-                this.btnStartStop.Text = "Start";
-
-                SaveTask(activityGuid);
-                //new Guid(this.cmbActivities.SelectedValue.ToString())
-                this.OnViewStateChanged("FillGrid");
-            }
-        }
-
-        private void SaveTask(Guid activityId)
-        {
-            TimeSpan timeSpan = new TimeSpan();
-            int diff = 0;
-            timeSpan = now - start;
-            diff = diff + timeSpan.Hours * 3600;
-            diff = diff + timeSpan.Minutes * 60;
-            diff = diff + timeSpan.Seconds;
-
-            Task task = new Task { ActivityId = activityId, DatetimeFrom = start, DatetimeTo = now, Diff = diff };
-            this.taskService.AddTask(task);
-        }
-
-        private void lblDatePost_Click(object sender, EventArgs e)
-        {
-            this.OnViewStateChanged("DatePost");
-        }
-
-        private void lblDatePrev_Click(object sender, EventArgs e)
-        {
-            this.OnViewStateChanged("DatePrev");
-        }
-
-        private void cmbActivities_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (running)
-            {
-                btnStartStop_Click(sender, e);
-                System.Threading.Thread.Sleep(400);
-                btnStartStop_Click(sender, e);
-                activityGuid = new Guid(this.cmbActivities.SelectedValue.ToString());
-            }
-            else
-            {
-                activityGuid = new Guid(this.cmbActivities.SelectedValue.ToString());
-            }
-        }
-
-        private void TabMain_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (TabMain.SelectedIndex == 2)
-            {
-                FillActivityGrid();
-            }
-        }
-
         private void FillActivityGrid()
         {
             this.lvwActivity.Items.Clear();
-            IList<Activity> activities = this.taskService.GetActivities();
+            IList<Activity> activities = (List<Activity>)this.ViewData["activities"];
 
             foreach (Activity activity in activities)
             {
@@ -197,10 +179,9 @@
         {
             Activity activity = new Activity { Color = "", Description = this.txtCategory.Text.Trim(), Id = new Guid() };
 
-            this.taskService.AddActivity(activity);
+            this.ViewData["activity"] = activity;
+            this.OnViewStateChanged("AddActivity");
             this.txtCategory.Text = "";
-            FillActivityGrid();
-            this.OnViewStateChanged("FillActivitiesCombo");
         }
 
         private void btnExport_Click(object sender, EventArgs e)
@@ -242,6 +223,7 @@
                 }
             }
         }
+
         #region IView<Task> Members
 
         public new Task Model

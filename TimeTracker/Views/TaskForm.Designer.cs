@@ -61,7 +61,7 @@
             // 
             this.cmbActivities.Location = new System.Drawing.Point(74, 14);
             this.cmbActivities.Name = "cmbActivities";
-            this.cmbActivities.Size = new System.Drawing.Size(143, 22);
+            this.cmbActivities.Size = new System.Drawing.Size(144, 22);
             this.cmbActivities.TabIndex = 2;
             // 
             // lblFrom
@@ -95,20 +95,20 @@
             // 
             // txtFrom
             // 
-            this.txtFrom.CustomFormat = "dd/MM/yy hh:mm:ss";
+            this.txtFrom.CustomFormat = "dd/MM/yy hh:mm:ss tt";
             this.txtFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.txtFrom.Location = new System.Drawing.Point(75, 52);
             this.txtFrom.Name = "txtFrom";
-            this.txtFrom.Size = new System.Drawing.Size(142, 22);
+            this.txtFrom.Size = new System.Drawing.Size(144, 22);
             this.txtFrom.TabIndex = 14;
             // 
             // txtTo
             // 
-            this.txtTo.CustomFormat = "dd/MM/yy hh:mm:ss";
+            this.txtTo.CustomFormat = "dd/MM/yy hh:mm:ss tt";
             this.txtTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.txtTo.Location = new System.Drawing.Point(74, 96);
             this.txtTo.Name = "txtTo";
-            this.txtTo.Size = new System.Drawing.Size(143, 22);
+            this.txtTo.Size = new System.Drawing.Size(144, 22);
             this.txtTo.TabIndex = 15;
             // 
             // TaskForm

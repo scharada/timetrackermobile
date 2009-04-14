@@ -48,6 +48,13 @@ namespace TimeTracker.Services
 
         public void AddTask(Task task)
         {
+            TimeSpan timeSpan = new TimeSpan();
+            timeSpan = task.DatetimeTo - task.DatetimeFrom;
+
+            task.Diff = timeSpan.Hours * 3600;
+            task.Diff = task.Diff + timeSpan.Minutes * 60;
+            task.Diff = task.Diff + timeSpan.Seconds;
+
             this.dataAccess.AddTask(task);
         }
 
@@ -55,10 +62,12 @@ namespace TimeTracker.Services
         {
             TimeSpan timeSpan = new TimeSpan();
             timeSpan = task.DatetimeTo - task.DatetimeFrom;
-            task.Diff = timeSpan.Seconds;
 
+            task.Diff = timeSpan.Hours * 3600;
+            task.Diff = task.Diff + timeSpan.Minutes * 60;
+            task.Diff = task.Diff + timeSpan.Seconds;
+            
             this.dataAccess.UpdateTask(task);
         }
-
     }
 }
