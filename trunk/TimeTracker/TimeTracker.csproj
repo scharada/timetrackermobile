@@ -94,6 +94,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\Clock.ico" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\TimeTracker.Services.Contracts\TimeTracker.Services.Contracts.csproj">
       <Project>{ECDA10AA-A1D2-42F9-BE9E-C4FFA7A957D3}</Project>
       <Name>TimeTracker.Services.Contracts</Name>
@@ -102,9 +105,6 @@
       <Project>{DC83C182-9221-4FDA-BF0B-9F6623C53CF9}</Project>
       <Name>TimeTracker.Services</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Resources\Clock.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CompactFramework.CSharp.targets" />
   <ProjectExtensions>
