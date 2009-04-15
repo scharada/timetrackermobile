@@ -47,7 +47,7 @@
             this.cmbActivities = new System.Windows.Forms.ComboBox();
             this.btnStartStop = new System.Windows.Forms.Button();
             this.tabPageGraph = new System.Windows.Forms.TabPage();
-            this.tabPageSettings = new System.Windows.Forms.TabPage();
+            this.tabPageCategories = new System.Windows.Forms.TabPage();
             this.txtCategory = new System.Windows.Forms.TextBox();
             this.btnRemove = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
@@ -64,7 +64,7 @@
             this.tabPageAbout = new System.Windows.Forms.TabPage();
             this.TabMain.SuspendLayout();
             this.tabPageTasks.SuspendLayout();
-            this.tabPageSettings.SuspendLayout();
+            this.tabPageCategories.SuspendLayout();
             this.tabPageExport.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -72,7 +72,7 @@
             // 
             this.TabMain.Controls.Add(this.tabPageTasks);
             this.TabMain.Controls.Add(this.tabPageGraph);
-            this.TabMain.Controls.Add(this.tabPageSettings);
+            this.TabMain.Controls.Add(this.tabPageCategories);
             this.TabMain.Controls.Add(this.tabPageExport);
             this.TabMain.Controls.Add(this.tabPageAbout);
             this.TabMain.Location = new System.Drawing.Point(0, 0);
@@ -208,16 +208,16 @@
             this.tabPageGraph.Size = new System.Drawing.Size(232, 241);
             this.tabPageGraph.Text = "Graph";
             // 
-            // tabPageSettings
+            // tabPageCategories
             // 
-            this.tabPageSettings.Controls.Add(this.txtCategory);
-            this.tabPageSettings.Controls.Add(this.btnRemove);
-            this.tabPageSettings.Controls.Add(this.btnAdd);
-            this.tabPageSettings.Controls.Add(this.lvwActivity);
-            this.tabPageSettings.Location = new System.Drawing.Point(0, 0);
-            this.tabPageSettings.Name = "tabPageSettings";
-            this.tabPageSettings.Size = new System.Drawing.Size(232, 241);
-            this.tabPageSettings.Text = "Settings";
+            this.tabPageCategories.Controls.Add(this.txtCategory);
+            this.tabPageCategories.Controls.Add(this.btnRemove);
+            this.tabPageCategories.Controls.Add(this.btnAdd);
+            this.tabPageCategories.Controls.Add(this.lvwActivity);
+            this.tabPageCategories.Location = new System.Drawing.Point(0, 0);
+            this.tabPageCategories.Name = "tabPageCategories";
+            this.tabPageCategories.Size = new System.Drawing.Size(240, 244);
+            this.tabPageCategories.Text = "Categories";
             // 
             // txtCategory
             // 
@@ -348,7 +348,7 @@
             this.Load += new System.EventHandler(this.Main_Load);
             this.TabMain.ResumeLayout(false);
             this.tabPageTasks.ResumeLayout(false);
-            this.tabPageSettings.ResumeLayout(false);
+            this.tabPageCategories.ResumeLayout(false);
             this.tabPageExport.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -372,7 +372,7 @@
         private System.Windows.Forms.LinkLabel lblDatePrev;
         private System.Windows.Forms.LinkLabel lblDatePost;
         private System.Windows.Forms.Label lblTotal;
-        private System.Windows.Forms.TabPage tabPageSettings;
+        private System.Windows.Forms.TabPage tabPageCategories;
         private System.Windows.Forms.ListView lvwActivity;
         private System.Windows.Forms.ColumnHeader colCategory;
         private System.Windows.Forms.TabPage tabPageAbout;

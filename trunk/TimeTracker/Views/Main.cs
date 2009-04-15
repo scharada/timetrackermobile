@@ -137,9 +137,19 @@
 
         private void TabMain_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (TabMain.SelectedIndex == 2)
+            switch (TabMain.SelectedIndex)
             {
-                FillActivityGrid();
+                case 2:
+                    FillActivityGrid();
+                    break;
+                case 4:
+                    Views.AboutForm aboutForm = new Views.AboutForm();
+                    Controllers.AboutController aboutController = new Controllers.AboutController(aboutForm);
+                    aboutForm.ShowDialog();
+                    TabMain.SelectedIndex = 0;
+                    break;
+                default:
+                    break;
             }
         }
 
