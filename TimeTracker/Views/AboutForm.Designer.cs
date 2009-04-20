@@ -6,7 +6,6 @@
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
-        private System.Windows.Forms.MainMenu mainMenu1;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -29,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.mainMenu1 = new System.Windows.Forms.MainMenu();
             this.lblTitle = new System.Windows.Forms.Label();
             this.lblAuthor = new System.Windows.Forms.Label();
             this.lblVersion = new System.Windows.Forms.Label();
@@ -98,7 +96,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(240, 268);
+            this.ClientSize = new System.Drawing.Size(240, 294);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.lnkCodeURL);
             this.Controls.Add(this.lblVersionDesc);
@@ -106,7 +104,7 @@
             this.Controls.Add(this.lblVersion);
             this.Controls.Add(this.lblAuthor);
             this.Controls.Add(this.lblTitle);
-            this.Menu = this.mainMenu1;
+            this.KeyPreview = true;
             this.Name = "AboutForm";
             this.Text = "About";
             this.Load += new System.EventHandler(this.AboutForm_Load);

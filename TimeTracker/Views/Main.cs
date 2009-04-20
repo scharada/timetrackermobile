@@ -7,10 +7,11 @@
     using System.Threading;
     using System.Windows.Forms;
     using TimeTracker.Services.Contracts;
+    using System.Resources;
+    using System.Reflection;
 
     public partial class Main : ViewForm, IView<Task>
     {
-
         public Main()
         {
             InitializeComponent();
@@ -53,6 +54,7 @@
         {
             lblStart.Text = DateTime.Now.ToShortTimeString();
         }
+
         protected override void OnUpdateView(string key)
         {
             switch (key)
@@ -102,19 +104,19 @@
 
         private void btnStartStop_Click(object sender, EventArgs e)
         {
-            if (OnStartStopEvent != null)
-            {
-                OnStartStopEvent(this, new EventArgs());
-            }
+            //if (OnStartStopEvent != null)
+            //{
+            //    OnStartStopEvent(this, new EventArgs());
+            //}
 
-            if (this.btnStartStop.Text == "Stop")
-            {
-                this.btnStartStop.Text = "Start";
-            }
-            else
-            {
-                this.btnStartStop.Text = "Stop";
-            }
+            //if (this.btnStartStop.Text == "Stop")
+            //{
+            //    this.btnStartStop.Text = "Start";
+            //}
+            //else
+            //{
+            //    this.btnStartStop.Text = "Stop";
+            //}
         }
 
         private void lblDatePost_Click(object sender, EventArgs e)
@@ -249,5 +251,37 @@
         }
 
         #endregion
+
+        private void imgDatePost_Click(object sender, EventArgs e)
+        {
+            this.OnViewStateChanged("DatePost");
+        }
+
+        private void imgDatePrev_Click(object sender, EventArgs e)
+        {
+            this.OnViewStateChanged("DatePrev");
+        }
+
+        private void imgStart_Click(object sender, EventArgs e)
+        {
+            ResourceManager resmgr = new ResourceManager("TimeTracker.Resources",Assembly.GetExecutingAssembly());
+
+            if (OnStartStopEvent != null)
+            {
+                OnStartStopEvent(this, new EventArgs());
+            }
+
+            if (this.imgStart.Tag.ToString() == "Stop")
+            {
+                this.imgStart.Tag = "Start";
+                this.imgStart.Image = (System.Drawing.Image)resmgr.GetObject("plus");
+            }
+            else
+            {
+                this.imgStart.Tag = "Stop";
+                this.imgStart.Image = (System.Drawing.Image)resmgr.GetObject("minus");
+            }
+
+        }
     }
 }

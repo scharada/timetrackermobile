@@ -6,7 +6,6 @@
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
-        private System.Windows.Forms.MainMenu mainMenu1;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -30,12 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
-            this.mainMenu1 = new System.Windows.Forms.MainMenu();
             this.TabMain = new System.Windows.Forms.TabControl();
             this.tabPageTasks = new System.Windows.Forms.TabPage();
+            this.imgStart = new System.Windows.Forms.PictureBox();
             this.lblTotal = new System.Windows.Forms.Label();
-            this.lblDatePost = new System.Windows.Forms.LinkLabel();
-            this.lblDatePrev = new System.Windows.Forms.LinkLabel();
             this.lblDate = new System.Windows.Forms.Label();
             this.lblStop = new System.Windows.Forms.Label();
             this.lblStart = new System.Windows.Forms.Label();
@@ -45,7 +42,9 @@
             this.colEnd = new System.Windows.Forms.ColumnHeader();
             this.colElapsed = new System.Windows.Forms.ColumnHeader();
             this.cmbActivities = new System.Windows.Forms.ComboBox();
-            this.btnStartStop = new System.Windows.Forms.Button();
+            this.imgDatePrev = new System.Windows.Forms.PictureBox();
+            this.imgDatePost = new System.Windows.Forms.PictureBox();
+            this.imgStop = new System.Windows.Forms.PictureBox();
             this.tabPageGraph = new System.Windows.Forms.TabPage();
             this.tabPageCategories = new System.Windows.Forms.TabPage();
             this.txtCategory = new System.Windows.Forms.TextBox();
@@ -78,53 +77,49 @@
             this.TabMain.Location = new System.Drawing.Point(0, 0);
             this.TabMain.Name = "TabMain";
             this.TabMain.SelectedIndex = 0;
-            this.TabMain.Size = new System.Drawing.Size(240, 267);
+            this.TabMain.Size = new System.Drawing.Size(240, 294);
             this.TabMain.TabIndex = 0;
             this.TabMain.SelectedIndexChanged += new System.EventHandler(this.TabMain_SelectedIndexChanged);
             // 
             // tabPageTasks
             // 
+            this.tabPageTasks.BackColor = System.Drawing.Color.Transparent;
+            this.tabPageTasks.Controls.Add(this.imgStop);
             this.tabPageTasks.Controls.Add(this.lblTotal);
-            this.tabPageTasks.Controls.Add(this.lblDatePost);
-            this.tabPageTasks.Controls.Add(this.lblDatePrev);
             this.tabPageTasks.Controls.Add(this.lblDate);
             this.tabPageTasks.Controls.Add(this.lblStop);
             this.tabPageTasks.Controls.Add(this.lblStart);
             this.tabPageTasks.Controls.Add(this.lvwTasks);
             this.tabPageTasks.Controls.Add(this.cmbActivities);
-            this.tabPageTasks.Controls.Add(this.btnStartStop);
+            this.tabPageTasks.Controls.Add(this.imgDatePrev);
+            this.tabPageTasks.Controls.Add(this.imgDatePost);
+            this.tabPageTasks.Controls.Add(this.imgStart);
             this.tabPageTasks.Location = new System.Drawing.Point(0, 0);
             this.tabPageTasks.Name = "tabPageTasks";
-            this.tabPageTasks.Size = new System.Drawing.Size(240, 244);
+            this.tabPageTasks.Size = new System.Drawing.Size(240, 271);
             this.tabPageTasks.Text = "Tasks";
+            // 
+            // imgStart
+            // 
+            this.imgStart.Image = ((System.Drawing.Image)(resources.GetObject("imgStart.Image")));
+            this.imgStart.Location = new System.Drawing.Point(161, 201);
+            this.imgStart.Name = "imgStart";
+            this.imgStart.Size = new System.Drawing.Size(65, 65);
+            this.imgStart.Tag = "Start";
+            this.imgStart.Click += new System.EventHandler(this.imgStart_Click);
             // 
             // lblTotal
             // 
-            this.lblTotal.Location = new System.Drawing.Point(151, 156);
+            this.lblTotal.BackColor = System.Drawing.Color.White;
+            this.lblTotal.Location = new System.Drawing.Point(151, 165);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(82, 20);
+            this.lblTotal.Text = "[Total]";
             this.lblTotal.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // lblDatePost
-            // 
-            this.lblDatePost.Location = new System.Drawing.Point(209, 3);
-            this.lblDatePost.Name = "lblDatePost";
-            this.lblDatePost.Size = new System.Drawing.Size(24, 20);
-            this.lblDatePost.TabIndex = 6;
-            this.lblDatePost.Text = ">";
-            this.lblDatePost.Click += new System.EventHandler(this.lblDatePost_Click);
-            // 
-            // lblDatePrev
-            // 
-            this.lblDatePrev.Location = new System.Drawing.Point(12, 3);
-            this.lblDatePrev.Name = "lblDatePrev";
-            this.lblDatePrev.Size = new System.Drawing.Size(24, 20);
-            this.lblDatePrev.TabIndex = 5;
-            this.lblDatePrev.Text = "<";
-            this.lblDatePrev.Click += new System.EventHandler(this.lblDatePrev_Click);
             // 
             // lblDate
             // 
+            this.lblDate.BackColor = System.Drawing.Color.White;
             this.lblDate.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
             this.lblDate.Location = new System.Drawing.Point(48, 5);
             this.lblDate.Name = "lblDate";
@@ -134,14 +129,16 @@
             // 
             // lblStop
             // 
-            this.lblStop.Location = new System.Drawing.Point(79, 179);
+            this.lblStop.BackColor = System.Drawing.Color.White;
+            this.lblStop.Location = new System.Drawing.Point(79, 200);
             this.lblStop.Name = "lblStop";
             this.lblStop.Size = new System.Drawing.Size(82, 20);
             this.lblStop.Text = "Elapsed";
             // 
             // lblStart
             // 
-            this.lblStart.Location = new System.Drawing.Point(7, 179);
+            this.lblStart.BackColor = System.Drawing.Color.White;
+            this.lblStart.Location = new System.Drawing.Point(7, 200);
             this.lblStart.Name = "lblStart";
             this.lblStart.Size = new System.Drawing.Size(73, 20);
             this.lblStart.Text = "Start";
@@ -154,9 +151,9 @@
             this.lvwTasks.Columns.Add(this.colElapsed);
             this.lvwTasks.Font = new System.Drawing.Font("Tahoma", 7F, System.Drawing.FontStyle.Regular);
             this.lvwTasks.FullRowSelect = true;
-            this.lvwTasks.Location = new System.Drawing.Point(0, 23);
+            this.lvwTasks.Location = new System.Drawing.Point(0, 24);
             this.lvwTasks.Name = "lvwTasks";
-            this.lvwTasks.Size = new System.Drawing.Size(240, 130);
+            this.lvwTasks.Size = new System.Drawing.Size(240, 138);
             this.lvwTasks.TabIndex = 3;
             this.lvwTasks.View = System.Windows.Forms.View.Details;
             this.lvwTasks.ItemActivate += new System.EventHandler(this.lvwTasks_ItemActivate);
@@ -186,26 +183,41 @@
             // 
             // cmbActivities
             // 
-            this.cmbActivities.Location = new System.Drawing.Point(7, 217);
+            this.cmbActivities.Location = new System.Drawing.Point(7, 238);
             this.cmbActivities.Name = "cmbActivities";
             this.cmbActivities.Size = new System.Drawing.Size(129, 22);
             this.cmbActivities.TabIndex = 2;
             this.cmbActivities.SelectedIndexChanged += new System.EventHandler(this.cmbActivities_SelectedIndexChanged);
             // 
-            // btnStartStop
+            // imgDatePrev
             // 
-            this.btnStartStop.Location = new System.Drawing.Point(161, 180);
-            this.btnStartStop.Name = "btnStartStop";
-            this.btnStartStop.Size = new System.Drawing.Size(72, 59);
-            this.btnStartStop.TabIndex = 1;
-            this.btnStartStop.Text = "Start";
-            this.btnStartStop.Click += new System.EventHandler(this.btnStartStop_Click);
+            this.imgDatePrev.Image = ((System.Drawing.Image)(resources.GetObject("imgDatePrev.Image")));
+            this.imgDatePrev.Location = new System.Drawing.Point(12, 1);
+            this.imgDatePrev.Name = "imgDatePrev";
+            this.imgDatePrev.Size = new System.Drawing.Size(22, 22);
+            this.imgDatePrev.Click += new System.EventHandler(this.imgDatePrev_Click);
+            // 
+            // imgDatePost
+            // 
+            this.imgDatePost.Image = ((System.Drawing.Image)(resources.GetObject("imgDatePost.Image")));
+            this.imgDatePost.Location = new System.Drawing.Point(202, 1);
+            this.imgDatePost.Name = "imgDatePost";
+            this.imgDatePost.Size = new System.Drawing.Size(22, 22);
+            this.imgDatePost.Click += new System.EventHandler(this.imgDatePost_Click);
+            // 
+            // imgStop
+            // 
+            this.imgStop.Image = ((System.Drawing.Image)(resources.GetObject("imgStop.Image")));
+            this.imgStop.Location = new System.Drawing.Point(161, 201);
+            this.imgStop.Name = "imgStop";
+            this.imgStop.Size = new System.Drawing.Size(65, 65);
+            this.imgStop.Visible = false;
             // 
             // tabPageGraph
             // 
             this.tabPageGraph.Location = new System.Drawing.Point(0, 0);
             this.tabPageGraph.Name = "tabPageGraph";
-            this.tabPageGraph.Size = new System.Drawing.Size(232, 241);
+            this.tabPageGraph.Size = new System.Drawing.Size(232, 268);
             this.tabPageGraph.Text = "Graph";
             // 
             // tabPageCategories
@@ -216,7 +228,7 @@
             this.tabPageCategories.Controls.Add(this.lvwActivity);
             this.tabPageCategories.Location = new System.Drawing.Point(0, 0);
             this.tabPageCategories.Name = "tabPageCategories";
-            this.tabPageCategories.Size = new System.Drawing.Size(240, 244);
+            this.tabPageCategories.Size = new System.Drawing.Size(240, 271);
             this.tabPageCategories.Text = "Categories";
             // 
             // txtCategory
@@ -271,7 +283,7 @@
             this.tabPageExport.Controls.Add(this.dtpFrom);
             this.tabPageExport.Location = new System.Drawing.Point(0, 0);
             this.tabPageExport.Name = "tabPageExport";
-            this.tabPageExport.Size = new System.Drawing.Size(232, 241);
+            this.tabPageExport.Size = new System.Drawing.Size(240, 271);
             this.tabPageExport.Text = "Export";
             // 
             // lblExportStatus
@@ -331,7 +343,7 @@
             // 
             this.tabPageAbout.Location = new System.Drawing.Point(0, 0);
             this.tabPageAbout.Name = "tabPageAbout";
-            this.tabPageAbout.Size = new System.Drawing.Size(232, 241);
+            this.tabPageAbout.Size = new System.Drawing.Size(232, 268);
             this.tabPageAbout.Text = "About";
             // 
             // Main
@@ -339,10 +351,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(240, 268);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(240, 294);
             this.Controls.Add(this.TabMain);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Menu = this.mainMenu1;
             this.Name = "Main";
             this.Text = "Time Tracker";
             this.Load += new System.EventHandler(this.Main_Load);
@@ -360,7 +372,6 @@
         private System.Windows.Forms.TabPage tabPageTasks;
         private System.Windows.Forms.TabPage tabPageGraph;
         private System.Windows.Forms.ComboBox cmbActivities;
-        private System.Windows.Forms.Button btnStartStop;
         private System.Windows.Forms.ListView lvwTasks;
         private System.Windows.Forms.ColumnHeader colActivity;
         private System.Windows.Forms.ColumnHeader colStart;
@@ -369,8 +380,6 @@
         private System.Windows.Forms.Label lblStart;
         private System.Windows.Forms.ColumnHeader colElapsed;
         private System.Windows.Forms.Label lblDate;
-        private System.Windows.Forms.LinkLabel lblDatePrev;
-        private System.Windows.Forms.LinkLabel lblDatePost;
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.TabPage tabPageCategories;
         private System.Windows.Forms.ListView lvwActivity;
@@ -387,5 +396,9 @@
         private System.Windows.Forms.Label lblTo;
         private System.Windows.Forms.DateTimePicker dtpTo;
         private System.Windows.Forms.Label lblExportStatus;
+        private System.Windows.Forms.PictureBox imgDatePost;
+        private System.Windows.Forms.PictureBox imgDatePrev;
+        private System.Windows.Forms.PictureBox imgStart;
+        private System.Windows.Forms.PictureBox imgStop;
     }
 }
