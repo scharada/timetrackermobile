@@ -1,15 +1,9 @@
-﻿using System;
-using System.Linq;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
-using System.Mobile.Mvc;
-
-namespace TimeTracker.Views
+﻿namespace TimeTracker.Views
 {
+    using System;
+    using System.Mobile.Mvc;
+    using System.Windows.Forms;
+
     public partial class AboutForm : ViewForm
     {
         public AboutForm()
@@ -40,5 +34,6 @@ namespace TimeTracker.Views
         {
             this.Close();
         }
+              
     }
 }

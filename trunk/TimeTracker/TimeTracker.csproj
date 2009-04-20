@@ -46,6 +46,8 @@
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.WindowsMobile, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+    <Reference Include="Microsoft.WindowsMobile.Status, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
     <Reference Include="mscorlib" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -64,13 +66,26 @@
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\TaskController.cs" />
     <Compile Include="ElapsedStatus.cs" />
+    <Compile Include="OrientationAware\OrientationAwareHelper.cs">
+    </Compile>
+    <Compile Include="OrientationAware\OrientationAwareViewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Properties\Resources.resx">
+    <EmbeddedResource Include="Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <!--    
+    <EmbeddedResource Include="Views\AboutForm.H.resx">
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\AboutForm.V.resx">
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </EmbeddedResource>
+-->
     <EmbeddedResource Include="Views\AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -80,9 +95,10 @@
     <EmbeddedResource Include="Views\TaskForm.resx">
       <DependentUpon>TaskForm.cs</DependentUpon>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
+    <Compile Include="Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Views\AboutForm.cs">
       <SubType>Form</SubType>
@@ -105,6 +121,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\Clock.ico" />
+    <Content Include="Resources\left.png" />
+    <Content Include="Resources\minus.png" />
+    <Content Include="Resources\plus.png" />
+    <Content Include="Resources\right.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TimeTracker.Services.Contracts\TimeTracker.Services.Contracts.csproj">

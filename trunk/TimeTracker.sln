@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeTracker.Services", "Tim
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeTracker", "TimeTracker\TimeTracker.csproj", "{DD86A0D6-E51E-494E-AA04-98521A7DD2D6}"
 EndProject
-Project("{B900F1C2-3D47-4FEC-85B3-04AAF18C3634}") = "TimeTrackerSetup", "TimeTrackerSetup\TimeTrackerSetup.vddproj", "{0D9A786B-7841-4F23-B30B-9D71131CDCBF}"
+Project("{B900F1C2-3D47-4FEC-85B3-04AAF18C3634}") = "TimeTrackerSetup", "TimeTrackerSetup\TimeTrackerSetup.vddproj", "{F3F50610-B480-456F-B70F-05328E18D62A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,15 +37,15 @@ Global
 		{DD86A0D6-E51E-494E-AA04-98521A7DD2D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD86A0D6-E51E-494E-AA04-98521A7DD2D6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DD86A0D6-E51E-494E-AA04-98521A7DD2D6}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{0D9A786B-7841-4F23-B30B-9D71131CDCBF}.Debug|Any CPU.ActiveCfg = Debug
-		{0D9A786B-7841-4F23-B30B-9D71131CDCBF}.Debug|Any CPU.Build.0 = Debug
-		{0D9A786B-7841-4F23-B30B-9D71131CDCBF}.Release|Any CPU.ActiveCfg = Release
-		{0D9A786B-7841-4F23-B30B-9D71131CDCBF}.Release|Any CPU.Build.0 = Release
+		{F3F50610-B480-456F-B70F-05328E18D62A}.Debug|Any CPU.ActiveCfg = Debug
+		{F3F50610-B480-456F-B70F-05328E18D62A}.Debug|Any CPU.Build.0 = Debug
+		{F3F50610-B480-456F-B70F-05328E18D62A}.Release|Any CPU.ActiveCfg = Release
+		{F3F50610-B480-456F-B70F-05328E18D62A}.Release|Any CPU.Build.0 = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{0D9A786B-7841-4F23-B30B-9D71131CDCBF} = {3E10DFA9-A910-4559-B301-A90E08BA693E}
+		{F3F50610-B480-456F-B70F-05328E18D62A} = {3E10DFA9-A910-4559-B301-A90E08BA693E}
 	EndGlobalSection
 EndGlobal

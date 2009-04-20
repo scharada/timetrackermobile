@@ -2,3 +2,9 @@
 * Change Export feature to MVC pproach
 * Add Exports folder to CAB installer
 * Move forms to View folder
+
+0.3.0.0
+* Minor bugs fixes
+* Using MVC model, with Alex Ykhnin's MVC library
+* About form added
+* Look and feel enhacements (images)
