@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.TabMain = new System.Windows.Forms.TabControl();
             this.tabPageTasks = new System.Windows.Forms.TabPage();
-            this.imgStart = new System.Windows.Forms.PictureBox();
+            this.imgStop = new System.Windows.Forms.PictureBox();
             this.lblTotal = new System.Windows.Forms.Label();
             this.lblDate = new System.Windows.Forms.Label();
             this.lblStop = new System.Windows.Forms.Label();
@@ -44,7 +44,7 @@
             this.cmbActivities = new System.Windows.Forms.ComboBox();
             this.imgDatePrev = new System.Windows.Forms.PictureBox();
             this.imgDatePost = new System.Windows.Forms.PictureBox();
-            this.imgStop = new System.Windows.Forms.PictureBox();
+            this.imgStart = new System.Windows.Forms.PictureBox();
             this.tabPageGraph = new System.Windows.Forms.TabPage();
             this.tabPageCategories = new System.Windows.Forms.TabPage();
             this.txtCategory = new System.Windows.Forms.TextBox();
@@ -99,14 +99,13 @@
             this.tabPageTasks.Size = new System.Drawing.Size(240, 271);
             this.tabPageTasks.Text = "Tasks";
             // 
-            // imgStart
+            // imgStop
             // 
-            this.imgStart.Image = ((System.Drawing.Image)(resources.GetObject("imgStart.Image")));
-            this.imgStart.Location = new System.Drawing.Point(161, 201);
-            this.imgStart.Name = "imgStart";
-            this.imgStart.Size = new System.Drawing.Size(65, 65);
-            this.imgStart.Tag = "Start";
-            this.imgStart.Click += new System.EventHandler(this.imgStart_Click);
+            this.imgStop.Image = ((System.Drawing.Image)(resources.GetObject("imgStop.Image")));
+            this.imgStop.Location = new System.Drawing.Point(161, 201);
+            this.imgStop.Name = "imgStop";
+            this.imgStop.Size = new System.Drawing.Size(65, 65);
+            this.imgStop.Visible = false;
             // 
             // lblTotal
             // 
@@ -205,13 +204,14 @@
             this.imgDatePost.Size = new System.Drawing.Size(22, 22);
             this.imgDatePost.Click += new System.EventHandler(this.imgDatePost_Click);
             // 
-            // imgStop
+            // imgStart
             // 
-            this.imgStop.Image = ((System.Drawing.Image)(resources.GetObject("imgStop.Image")));
-            this.imgStop.Location = new System.Drawing.Point(161, 201);
-            this.imgStop.Name = "imgStop";
-            this.imgStop.Size = new System.Drawing.Size(65, 65);
-            this.imgStop.Visible = false;
+            this.imgStart.Image = ((System.Drawing.Image)(resources.GetObject("imgStart.Image")));
+            this.imgStart.Location = new System.Drawing.Point(161, 201);
+            this.imgStart.Name = "imgStart";
+            this.imgStart.Size = new System.Drawing.Size(65, 65);
+            this.imgStart.Tag = "Start";
+            this.imgStart.Click += new System.EventHandler(this.imgStart_Click);
             // 
             // tabPageGraph
             // 
@@ -245,6 +245,7 @@
             this.btnRemove.Size = new System.Drawing.Size(72, 20);
             this.btnRemove.TabIndex = 6;
             this.btnRemove.Text = "Remove";
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // btnAdd
             // 
@@ -283,7 +284,7 @@
             this.tabPageExport.Controls.Add(this.dtpFrom);
             this.tabPageExport.Location = new System.Drawing.Point(0, 0);
             this.tabPageExport.Name = "tabPageExport";
-            this.tabPageExport.Size = new System.Drawing.Size(240, 271);
+            this.tabPageExport.Size = new System.Drawing.Size(232, 268);
             this.tabPageExport.Text = "Export";
             // 
             // lblExportStatus

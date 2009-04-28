@@ -64,11 +64,11 @@
                     break;
                 case "FillActivityGrid":
                     this.FillActivityGrid();
+                    this.FillActivitiesCombo();
+                    this.FillGrid();
                     break;
                 case "FillActivitiesCombo":
-                    this.cmbActivities.DisplayMember = "Description";
-                    this.cmbActivities.ValueMember = "Id";
-                    this.cmbActivities.DataSource = (List<Activity>)this.ViewData["activities"];
+                    this.FillActivitiesCombo();
                     break;
                 case "DatePrev":
                     this.lblDate.Text = ((DateTime)this.ViewData["today"]).ToLongDateString();
@@ -81,6 +81,13 @@
                 default:
                     break;
             }
+        }
+
+        private void FillActivitiesCombo()
+        {
+            this.cmbActivities.DisplayMember = "Description";
+            this.cmbActivities.ValueMember = "Id";
+            this.cmbActivities.DataSource = (List<Activity>)this.ViewData["activities"];
         }
 
         public void ChangeTimeMethod(string time)
@@ -183,7 +190,9 @@
 
             foreach (Activity activity in activities)
             {
-                this.lvwActivity.Items.Add(new ListViewItem(new string[] { activity.Description }));
+                ListViewItem item = new ListViewItem(new string[] { activity.Description });
+                item.Tag = activity.Id;
+                this.lvwActivity.Items.Add(item);
             }
         }
 
@@ -194,6 +203,18 @@
             this.ViewData["activity"] = activity;
             this.OnViewStateChanged("AddActivity");
             this.txtCategory.Text = "";
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            if (this.lvwActivity.SelectedIndices.Count > 0)
+            {
+                if (MessageBox.Show("Do you want to delete this Activity and all related tasks?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
+                {
+                    this.ViewData["activityGuid"] = this.lvwActivity.Items[lvwActivity.SelectedIndices[0]].Tag;
+                    this.OnViewStateChanged("RemoveActivity");
+                }
+            }
         }
 
         private void btnExport_Click(object sender, EventArgs e)
@@ -264,7 +285,7 @@
 
         private void imgStart_Click(object sender, EventArgs e)
         {
-            ResourceManager resmgr = new ResourceManager("TimeTracker.Resources",Assembly.GetExecutingAssembly());
+            ResourceManager resmgr = new ResourceManager("TimeTracker.Resources", Assembly.GetExecutingAssembly());
 
             if (OnStartStopEvent != null)
             {
@@ -283,5 +304,7 @@
             }
 
         }
+
+
     }
 }

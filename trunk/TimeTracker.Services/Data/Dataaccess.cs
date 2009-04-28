@@ -44,6 +44,31 @@
             }
         }
 
+        public void RemoveActivity(Guid id)
+        {
+            using (var command = DBConnectionProvider.Current.CreateCommand())
+            {
+                try
+                {
+                    command.Transaction = command.Connection.BeginTransaction();
+
+                    command.CommandType = System.Data.CommandType.Text;
+                    command.CommandText = "DELETE Tasks WHERE ActivityId = '" + id.ToString() + "'";
+                    command.ExecuteNonQuery();
+
+                    command.CommandText = "DELETE Activities WHERE Id = '" + id.ToString() + "'";
+                    command.ExecuteNonQuery();
+
+                    command.Transaction.Commit();
+                }
+                catch (Exception)
+                {
+                    command.Transaction.Rollback();
+                    throw;
+                }
+            }
+        }
+
         public void AddTask(Task task)
         {
             using (var command = DBConnectionProvider.Current.CreateCommand())
@@ -59,8 +84,8 @@
             using (var command = DBConnectionProvider.Current.CreateCommand())
             {
                 command.CommandType = System.Data.CommandType.Text;
-                command.CommandText = "UPDATE Tasks SET ActivityId ='" + task.ActivityId + 
-                    "', DatetimeFrom = '" + task.DatetimeFrom + "', DatetimeTo = '" + task.DatetimeTo + 
+                command.CommandText = "UPDATE Tasks SET ActivityId ='" + task.ActivityId +
+                    "', DatetimeFrom = '" + task.DatetimeFrom + "', DatetimeTo = '" + task.DatetimeTo +
                     "', Diff = " + task.Diff + " WHERE Id = '" + task.Id + "'";
 
                 command.ExecuteNonQuery();
