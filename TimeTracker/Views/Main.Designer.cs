@@ -69,11 +69,14 @@
             // 
             // TabMain
             // 
+            this.TabMain.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.TabMain.Controls.Add(this.tabPageTasks);
             this.TabMain.Controls.Add(this.tabPageGraph);
             this.TabMain.Controls.Add(this.tabPageCategories);
             this.TabMain.Controls.Add(this.tabPageExport);
             this.TabMain.Controls.Add(this.tabPageAbout);
+            this.TabMain.Dock = System.Windows.Forms.DockStyle.None;
             this.TabMain.Location = new System.Drawing.Point(0, 0);
             this.TabMain.Name = "TabMain";
             this.TabMain.SelectedIndex = 0;
@@ -84,7 +87,6 @@
             // tabPageTasks
             // 
             this.tabPageTasks.BackColor = System.Drawing.Color.Transparent;
-            this.tabPageTasks.Controls.Add(this.imgStop);
             this.tabPageTasks.Controls.Add(this.lblTotal);
             this.tabPageTasks.Controls.Add(this.lblDate);
             this.tabPageTasks.Controls.Add(this.lblStop);
@@ -93,6 +95,7 @@
             this.tabPageTasks.Controls.Add(this.cmbActivities);
             this.tabPageTasks.Controls.Add(this.imgDatePrev);
             this.tabPageTasks.Controls.Add(this.imgDatePost);
+            this.tabPageTasks.Controls.Add(this.imgStop);
             this.tabPageTasks.Controls.Add(this.imgStart);
             this.tabPageTasks.Location = new System.Drawing.Point(0, 0);
             this.tabPageTasks.Name = "tabPageTasks";
@@ -102,13 +105,16 @@
             // imgStop
             // 
             this.imgStop.Image = ((System.Drawing.Image)(resources.GetObject("imgStop.Image")));
-            this.imgStop.Location = new System.Drawing.Point(161, 201);
+            this.imgStop.Location = new System.Drawing.Point(161, 192);
             this.imgStop.Name = "imgStop";
             this.imgStop.Size = new System.Drawing.Size(65, 65);
+            this.imgStop.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imgStop.Visible = false;
             // 
             // lblTotal
             // 
+            this.lblTotal.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTotal.BackColor = System.Drawing.Color.White;
             this.lblTotal.Location = new System.Drawing.Point(151, 165);
             this.lblTotal.Name = "lblTotal";
@@ -118,6 +124,8 @@
             // 
             // lblDate
             // 
+            this.lblDate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.lblDate.BackColor = System.Drawing.Color.White;
             this.lblDate.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
             this.lblDate.Location = new System.Drawing.Point(48, 5);
@@ -129,7 +137,7 @@
             // lblStop
             // 
             this.lblStop.BackColor = System.Drawing.Color.White;
-            this.lblStop.Location = new System.Drawing.Point(79, 200);
+            this.lblStop.Location = new System.Drawing.Point(79, 165);
             this.lblStop.Name = "lblStop";
             this.lblStop.Size = new System.Drawing.Size(82, 20);
             this.lblStop.Text = "Elapsed";
@@ -137,13 +145,15 @@
             // lblStart
             // 
             this.lblStart.BackColor = System.Drawing.Color.White;
-            this.lblStart.Location = new System.Drawing.Point(7, 200);
+            this.lblStart.Location = new System.Drawing.Point(7, 165);
             this.lblStart.Name = "lblStart";
             this.lblStart.Size = new System.Drawing.Size(73, 20);
             this.lblStart.Text = "Start";
             // 
             // lvwTasks
             // 
+            this.lvwTasks.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.lvwTasks.Columns.Add(this.colActivity);
             this.lvwTasks.Columns.Add(this.colStart);
             this.lvwTasks.Columns.Add(this.colEnd);
@@ -182,7 +192,7 @@
             // 
             // cmbActivities
             // 
-            this.cmbActivities.Location = new System.Drawing.Point(7, 238);
+            this.cmbActivities.Location = new System.Drawing.Point(7, 207);
             this.cmbActivities.Name = "cmbActivities";
             this.cmbActivities.Size = new System.Drawing.Size(129, 22);
             this.cmbActivities.TabIndex = 2;
@@ -194,22 +204,26 @@
             this.imgDatePrev.Location = new System.Drawing.Point(12, 1);
             this.imgDatePrev.Name = "imgDatePrev";
             this.imgDatePrev.Size = new System.Drawing.Size(22, 22);
+            this.imgDatePrev.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imgDatePrev.Click += new System.EventHandler(this.imgDatePrev_Click);
             // 
             // imgDatePost
             // 
+            this.imgDatePost.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.imgDatePost.Image = ((System.Drawing.Image)(resources.GetObject("imgDatePost.Image")));
             this.imgDatePost.Location = new System.Drawing.Point(202, 1);
             this.imgDatePost.Name = "imgDatePost";
             this.imgDatePost.Size = new System.Drawing.Size(22, 22);
+            this.imgDatePost.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imgDatePost.Click += new System.EventHandler(this.imgDatePost_Click);
             // 
             // imgStart
             // 
             this.imgStart.Image = ((System.Drawing.Image)(resources.GetObject("imgStart.Image")));
-            this.imgStart.Location = new System.Drawing.Point(161, 201);
+            this.imgStart.Location = new System.Drawing.Point(161, 192);
             this.imgStart.Name = "imgStart";
             this.imgStart.Size = new System.Drawing.Size(65, 65);
+            this.imgStart.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imgStart.Tag = "Start";
             this.imgStart.Click += new System.EventHandler(this.imgStart_Click);
             // 
@@ -217,7 +231,7 @@
             // 
             this.tabPageGraph.Location = new System.Drawing.Point(0, 0);
             this.tabPageGraph.Name = "tabPageGraph";
-            this.tabPageGraph.Size = new System.Drawing.Size(232, 268);
+            this.tabPageGraph.Size = new System.Drawing.Size(232, 256);
             this.tabPageGraph.Text = "Graph";
             // 
             // tabPageCategories
@@ -228,7 +242,7 @@
             this.tabPageCategories.Controls.Add(this.lvwActivity);
             this.tabPageCategories.Location = new System.Drawing.Point(0, 0);
             this.tabPageCategories.Name = "tabPageCategories";
-            this.tabPageCategories.Size = new System.Drawing.Size(240, 271);
+            this.tabPageCategories.Size = new System.Drawing.Size(232, 256);
             this.tabPageCategories.Text = "Categories";
             // 
             // txtCategory
@@ -284,7 +298,7 @@
             this.tabPageExport.Controls.Add(this.dtpFrom);
             this.tabPageExport.Location = new System.Drawing.Point(0, 0);
             this.tabPageExport.Name = "tabPageExport";
-            this.tabPageExport.Size = new System.Drawing.Size(232, 268);
+            this.tabPageExport.Size = new System.Drawing.Size(232, 256);
             this.tabPageExport.Text = "Export";
             // 
             // lblExportStatus
@@ -344,7 +358,7 @@
             // 
             this.tabPageAbout.Location = new System.Drawing.Point(0, 0);
             this.tabPageAbout.Name = "tabPageAbout";
-            this.tabPageAbout.Size = new System.Drawing.Size(232, 268);
+            this.tabPageAbout.Size = new System.Drawing.Size(232, 256);
             this.tabPageAbout.Text = "About";
             // 
             // Main

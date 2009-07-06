@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnSave = new System.Windows.Forms.Button();
             this.lblActivity = new System.Windows.Forms.Label();
             this.cmbActivities = new System.Windows.Forms.ComboBox();
             this.lblFrom = new System.Windows.Forms.Label();
@@ -37,16 +36,10 @@
             this.txtElapsed = new System.Windows.Forms.TextBox();
             this.txtFrom = new System.Windows.Forms.DateTimePicker();
             this.txtTo = new System.Windows.Forms.DateTimePicker();
+            this.mainMenu1 = new System.Windows.Forms.MainMenu();
+            this.mnuSave = new System.Windows.Forms.MenuItem();
+            this.mnuCancel = new System.Windows.Forms.MenuItem();
             this.SuspendLayout();
-            // 
-            // btnSave
-            // 
-            this.btnSave.Location = new System.Drawing.Point(145, 189);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(72, 20);
-            this.btnSave.TabIndex = 0;
-            this.btnSave.Text = "Save";
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // lblActivity
             // 
@@ -109,12 +102,27 @@
             this.txtTo.Size = new System.Drawing.Size(144, 22);
             this.txtTo.TabIndex = 15;
             // 
+            // mainMenu1
+            // 
+            this.mainMenu1.MenuItems.Add(this.mnuCancel);
+            this.mainMenu1.MenuItems.Add(this.mnuSave);
+            // 
+            // mnuSave
+            // 
+            this.mnuSave.Text = "Save";
+            this.mnuSave.Click += new System.EventHandler(this.mnuSave_Click);
+            // 
+            // mnuCancel
+            // 
+            this.mnuCancel.Text = "Cancel";
+            this.mnuCancel.Click += new System.EventHandler(this.mnuCancel_Click);
+            // 
             // TaskForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(240, 294);
+            this.ClientSize = new System.Drawing.Size(240, 268);
             this.Controls.Add(this.txtTo);
             this.Controls.Add(this.txtFrom);
             this.Controls.Add(this.lblElapsed);
@@ -123,7 +131,7 @@
             this.Controls.Add(this.lblFrom);
             this.Controls.Add(this.cmbActivities);
             this.Controls.Add(this.lblActivity);
-            this.Controls.Add(this.btnSave);
+            this.Menu = this.mainMenu1;
             this.Name = "TaskForm";
             this.Text = "Task";
             this.Load += new System.EventHandler(this.TaskForm_Load);
@@ -133,7 +141,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label lblActivity;
         private System.Windows.Forms.ComboBox cmbActivities;
         private System.Windows.Forms.Label lblFrom;
@@ -142,5 +149,8 @@
         private System.Windows.Forms.TextBox txtElapsed;
         private System.Windows.Forms.DateTimePicker txtFrom;
         private System.Windows.Forms.DateTimePicker txtTo;
+        private System.Windows.Forms.MainMenu mainMenu1;
+        private System.Windows.Forms.MenuItem mnuSave;
+        private System.Windows.Forms.MenuItem mnuCancel;
     }
 }

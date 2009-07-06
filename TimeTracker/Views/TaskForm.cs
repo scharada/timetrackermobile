@@ -36,17 +36,6 @@
             }
         }
 
-        private void btnSave_Click(object sender, System.EventArgs e)
-        {
-            this.ViewData.Model.ActivityId = new Guid(this.cmbActivities.SelectedValue.ToString());
-            this.ViewData.Model.DatetimeFrom = this.txtFrom.Value;
-            this.ViewData.Model.DatetimeTo = this.txtTo.Value;
-
-            this.OnViewStateChanged("Save");
-            this.DialogResult = DialogResult.Yes;
-            this.Close();
-        }
-
         #region IView<Task> Members
 
         public new Task Model
@@ -62,5 +51,21 @@
         }
 
         #endregion
+
+        private void mnuSave_Click(object sender, EventArgs e)
+        {
+            this.ViewData.Model.ActivityId = new Guid(this.cmbActivities.SelectedValue.ToString());
+            this.ViewData.Model.DatetimeFrom = this.txtFrom.Value;
+            this.ViewData.Model.DatetimeTo = this.txtTo.Value;
+
+            this.OnViewStateChanged("Save");
+            this.DialogResult = DialogResult.Yes;
+            this.Close();
+        }
+
+        private void mnuCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
