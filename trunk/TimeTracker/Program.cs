@@ -12,9 +12,18 @@
         [MTAThread]
         static void Main()
         {
-            Main form = new Main();
+            //if (TimeTracker.Helpers.Platform.IsWindowsMobileProfessional)
+            //{
+            //    Main form = new Main();
+            //    TaskController controller = new TaskController(form);
+            //    Application.Run(form);
+            //}
+            //else if (TimeTracker.Helpers.Platform.IsWindowsMobileStandard)
+            //{
+            MainStd form = new MainStd();
             TaskController controller = new TaskController(form);
             Application.Run(form);
+            //}
         }
     }
 }

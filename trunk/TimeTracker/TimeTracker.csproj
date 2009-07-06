@@ -64,8 +64,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\AboutController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\ExportController.cs" />
     <Compile Include="Controllers\TaskController.cs" />
     <Compile Include="ElapsedStatus.cs" />
+    <Compile Include="Helpers\Platform.cs" />
     <Compile Include="OrientationAware\OrientationAwareHelper.cs">
     </Compile>
     <Compile Include="OrientationAware\OrientationAwareViewForm.cs">
@@ -89,6 +92,21 @@
     <EmbeddedResource Include="Views\AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Category\Categories.resx">
+      <DependentUpon>Categories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Category\Category.resx">
+      <DependentUpon>Category.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Category\CategoriesSelect.resx">
+      <DependentUpon>CategoriesSelect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Export.resx">
+      <DependentUpon>Export.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\MainStd.resx">
+      <DependentUpon>MainStd.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
@@ -105,6 +123,36 @@
     </Compile>
     <Compile Include="Views\AboutForm.Designer.cs">
       <DependentUpon>AboutForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Category\Categories.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Category\Categories.Designer.cs">
+      <DependentUpon>Categories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Category\Category.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Category\Category.Designer.cs">
+      <DependentUpon>Category.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Category\CategoriesSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Category\CategoriesSelect.Designer.cs">
+      <DependentUpon>CategoriesSelect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Export.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Export.Designer.cs">
+      <DependentUpon>Export.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainStd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\MainStd.Designer.cs">
+      <DependentUpon>MainStd.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Main.cs">
       <SubType>Form</SubType>

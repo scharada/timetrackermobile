@@ -39,6 +39,8 @@
             // 
             // lblTitle
             // 
+            this.lblTitle.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTitle.Font = new System.Drawing.Font("Tahoma", 16F, System.Drawing.FontStyle.Italic);
             this.lblTitle.Location = new System.Drawing.Point(16, 23);
             this.lblTitle.Name = "lblTitle";
@@ -47,6 +49,8 @@
             // 
             // lblAuthor
             // 
+            this.lblAuthor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.lblAuthor.Location = new System.Drawing.Point(20, 90);
             this.lblAuthor.Name = "lblAuthor";
             this.lblAuthor.Size = new System.Drawing.Size(49, 20);
@@ -54,6 +58,8 @@
             // 
             // lblVersion
             // 
+            this.lblVersion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.lblVersion.Location = new System.Drawing.Point(20, 127);
             this.lblVersion.Name = "lblVersion";
             this.lblVersion.Size = new System.Drawing.Size(55, 20);
@@ -61,6 +67,8 @@
             // 
             // lblAuthorDesc
             // 
+            this.lblAuthorDesc.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.lblAuthorDesc.Location = new System.Drawing.Point(74, 90);
             this.lblAuthorDesc.Name = "lblAuthorDesc";
             this.lblAuthorDesc.Size = new System.Drawing.Size(114, 20);
@@ -68,6 +76,8 @@
             // 
             // lblVersionDesc
             // 
+            this.lblVersionDesc.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.lblVersionDesc.Location = new System.Drawing.Point(74, 127);
             this.lblVersionDesc.Name = "lblVersionDesc";
             this.lblVersionDesc.Size = new System.Drawing.Size(114, 20);
@@ -75,6 +85,8 @@
             // 
             // lnkCodeURL
             // 
+            this.lnkCodeURL.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.lnkCodeURL.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Underline);
             this.lnkCodeURL.Location = new System.Drawing.Point(18, 169);
             this.lnkCodeURL.Name = "lnkCodeURL";
@@ -84,6 +96,8 @@
             // 
             // btnClose
             // 
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.btnClose.Location = new System.Drawing.Point(84, 221);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(72, 20);
