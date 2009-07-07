@@ -170,9 +170,9 @@
   <ItemGroup>
     <Content Include="Resources\Clock.ico" />
     <Content Include="Resources\left.png" />
-    <Content Include="Resources\minus.png" />
-    <Content Include="Resources\plus.png" />
+    <Content Include="Resources\record.png" />
     <Content Include="Resources\right.png" />
+    <Content Include="Resources\stop.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TimeTracker.Services.Contracts\TimeTracker.Services.Contracts.csproj">
