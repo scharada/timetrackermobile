@@ -251,13 +251,13 @@
             if (this.imgStart.Tag.ToString() == "Stop")
             {
                 this.imgStart.Tag = "Start";
-                this.imgStart.Image = (System.Drawing.Image)resmgr.GetObject("plus");
+                this.imgStart.Image = (System.Drawing.Image)resmgr.GetObject("record");
                 this.mnuStartStop.Text = "Start";
             }
             else
             {
                 this.imgStart.Tag = "Stop";
-                this.imgStart.Image = (System.Drawing.Image)resmgr.GetObject("minus");
+                this.imgStart.Image = (System.Drawing.Image)resmgr.GetObject("stop");
                 this.mnuStartStop.Text = "Stop";
             }
         }
