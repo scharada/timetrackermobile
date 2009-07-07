@@ -279,5 +279,17 @@
         {
             cmbActivities.SelectedValue = new Guid(this.ViewData["activityGuid"].ToString());
         }
+
+        private void mnuDeleteTask_Click(object sender, EventArgs e)
+        {
+            if (this.lvwTasks.SelectedIndices.Count > 0)
+            {
+                if (MessageBox.Show("Do you want to delete this Task?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
+                {
+                    this.ViewData["taskGuid"] = this.lvwTasks.Items[lvwTasks.SelectedIndices[0]].Tag;
+                    this.OnViewStateChanged("RemoveTask");
+                }
+            }
+        }
     }
 }

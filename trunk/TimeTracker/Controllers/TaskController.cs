@@ -125,6 +125,12 @@
                     this.view.ViewData["tasksByDay"] = this.taskService.GetTasksByDay((DateTime)this.view.ViewData["today"]);
                     this.view.UpdateView("FillActivityGrid");
                     break;
+                case "DeleteTask":
+                    this.taskService.DeleteTask(new Guid(this.view.ViewData["taskGuid"].ToString()));
+                    this.view.ViewData["activities"] = this.taskService.GetActivities();
+                    this.view.ViewData["tasksByDay"] = this.taskService.GetTasksByDay((DateTime)this.view.ViewData["today"]);
+                    this.view.UpdateView("FillActivityGrid");
+                    break;
                 case "Save":
                     this.taskService.UpdateTask(this.view.ViewData.Model);
                     this.view.UpdateView("");

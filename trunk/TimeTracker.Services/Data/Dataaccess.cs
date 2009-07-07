@@ -69,6 +69,23 @@
             }
         }
 
+        public void RemoveTask(Guid id)
+        {
+            using (var command = DBConnectionProvider.Current.CreateCommand())
+            {
+                try
+                {
+                    command.CommandType = System.Data.CommandType.Text;
+                    command.CommandText = "DELETE Tasks WHERE Id = '" + id.ToString() + "'";
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
+        }
+
         public void AddTask(Task task)
         {
             using (var command = DBConnectionProvider.Current.CreateCommand())
