@@ -51,6 +51,11 @@ namespace TimeTracker.Services
             this.dataAccess.RemoveActivity(id);
         }
 
+        public void RemoveTask(Guid id)
+        {
+            this.dataAccess.RemoveTask(id);
+        }
+
         public void AddTask(Task task)
         {
             TimeSpan timeSpan = new TimeSpan();

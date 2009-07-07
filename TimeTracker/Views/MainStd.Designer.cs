@@ -54,7 +54,6 @@
             this.imgDatePost = new System.Windows.Forms.PictureBox();
             this.imgStop = new System.Windows.Forms.PictureBox();
             this.imgStart = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // mainMenu1
@@ -79,6 +78,7 @@
             // mnuDeleteTask
             // 
             this.mnuDeleteTask.Text = "Delete Task";
+            this.mnuDeleteTask.Click += new System.EventHandler(this.mnuDeleteTask_Click);
             // 
             // mnuExportTasks
             // 
@@ -117,6 +117,7 @@
             // 
             // lblTotal
             // 
+            this.lblTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblTotal.BackColor = System.Drawing.Color.White;
             this.lblTotal.Location = new System.Drawing.Point(151, 175);
             this.lblTotal.Name = "lblTotal";
@@ -138,6 +139,7 @@
             // 
             // lblStop
             // 
+            this.lblStop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblStop.BackColor = System.Drawing.Color.White;
             this.lblStop.Location = new System.Drawing.Point(79, 174);
             this.lblStop.Name = "lblStop";
@@ -146,6 +148,7 @@
             // 
             // lblStart
             // 
+            this.lblStart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblStart.BackColor = System.Drawing.Color.White;
             this.lblStart.Location = new System.Drawing.Point(7, 174);
             this.lblStart.Name = "lblStart";
@@ -194,6 +197,7 @@
             // 
             // cmbActivities
             // 
+            this.cmbActivities.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.cmbActivities.Location = new System.Drawing.Point(7, 222);
             this.cmbActivities.Name = "cmbActivities";
             this.cmbActivities.Size = new System.Drawing.Size(129, 22);
@@ -219,6 +223,7 @@
             // 
             // imgStop
             // 
+            this.imgStop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.imgStop.Image = ((System.Drawing.Image)(resources.GetObject("imgStop.Image")));
             this.imgStop.Location = new System.Drawing.Point(161, 199);
             this.imgStop.Name = "imgStop";
@@ -228,6 +233,7 @@
             // 
             // imgStart
             // 
+            this.imgStart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.imgStart.Image = ((System.Drawing.Image)(resources.GetObject("imgStart.Image")));
             this.imgStart.Location = new System.Drawing.Point(161, 199);
             this.imgStart.Name = "imgStart";
@@ -236,14 +242,6 @@
             this.imgStart.Tag = "Start";
             this.imgStart.Click += new System.EventHandler(this.imgStart_Click_1);
             // 
-            // label1
-            // 
-            this.label1.BackColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(6, 175);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(149, 43);
-            this.label1.Text = "Elapsed";
-            // 
             // MainStd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -251,7 +249,6 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(240, 268);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.lblTotal);
             this.Controls.Add(this.lblDate);
             this.Controls.Add(this.lblStop);
@@ -298,6 +295,5 @@
         private System.Windows.Forms.PictureBox imgStop;
         private System.Windows.Forms.PictureBox imgStart;
         private System.Windows.Forms.MenuItem mnuChangeCategory;
-        private System.Windows.Forms.Label label1;
     }
 }
