@@ -308,5 +308,12 @@
                 this.txtNotes.Text = "Notes";
             }
         }
+
+        private void mnuChart_Click(object sender, EventArgs e)
+        {
+            Views.Chart chartForm = new Views.Chart();
+            Controllers.ChartController chartController = new Controllers.ChartController(chartForm);
+            chartForm.ShowDialog();
+        }
     }
 }
