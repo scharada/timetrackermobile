@@ -65,6 +65,7 @@
   <ItemGroup>
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\ChartController.cs" />
     <Compile Include="Controllers\ExportController.cs" />
     <Compile Include="Controllers\TaskController.cs" />
     <Compile Include="ElapsedStatus.cs" />
@@ -100,6 +101,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Category\CategoriesSelect.resx">
       <DependentUpon>CategoriesSelect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Chart.resx">
+      <DependentUpon>Chart.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Export.resx">
       <DependentUpon>Export.cs</DependentUpon>
@@ -141,6 +145,12 @@
     </Compile>
     <Compile Include="Views\Category\CategoriesSelect.Designer.cs">
       <DependentUpon>CategoriesSelect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Chart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Chart.Designer.cs">
+      <DependentUpon>Chart.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Export.cs">
       <SubType>Form</SubType>

@@ -55,6 +55,8 @@
             this.imgStop = new System.Windows.Forms.PictureBox();
             this.imgStart = new System.Windows.Forms.PictureBox();
             this.txtNotes = new System.Windows.Forms.TextBox();
+            this.mnuChart = new System.Windows.Forms.MenuItem();
+            this.menuItem3 = new System.Windows.Forms.MenuItem();
             this.SuspendLayout();
             // 
             // mainMenu1
@@ -98,6 +100,8 @@
             // menuItem1
             // 
             this.menuItem1.MenuItems.Add(this.mnuCategory);
+            this.menuItem1.MenuItems.Add(this.mnuChart);
+            this.menuItem1.MenuItems.Add(this.menuItem3);
             this.menuItem1.MenuItems.Add(this.mnuAbout);
             this.menuItem1.Text = "Options";
             // 
@@ -255,6 +259,15 @@
             this.txtNotes.Text = "Notes";
             this.txtNotes.GotFocus += new System.EventHandler(this.txtNotes_GotFocus);
             // 
+            // mnuChart
+            // 
+            this.mnuChart.Text = "Chart";
+            this.mnuChart.Click += new System.EventHandler(this.mnuChart_Click);
+            // 
+            // menuItem3
+            // 
+            this.menuItem3.Text = "-";
+            // 
             // MainStd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -310,5 +323,7 @@
         private System.Windows.Forms.PictureBox imgStart;
         private System.Windows.Forms.MenuItem mnuChangeCategory;
         private System.Windows.Forms.TextBox txtNotes;
+        private System.Windows.Forms.MenuItem mnuChart;
+        private System.Windows.Forms.MenuItem menuItem3;
     }
 }
