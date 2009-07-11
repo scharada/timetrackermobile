@@ -18,6 +18,8 @@ namespace TimeTracker.Views.Category
             InitializeComponent();
         }
 
+        public bool ItemChanged { get; set; }
+
         private void Categories_Load(object sender, EventArgs e)
         {
             this.OnViewStateChanged("FillActivityGrid");
@@ -48,23 +50,26 @@ namespace TimeTracker.Views.Category
             }
         }
 
-        private void btnRemove_Click(object sender, EventArgs e)
-        {
-            if (this.lvwActivity.SelectedIndices.Count > 0)
-            {
-                if (MessageBox.Show("Do you want to delete this Activity and all related tasks?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
-                {
-                    this.ViewData["activityGuid"] = this.lvwActivity.Items[lvwActivity.SelectedIndices[0]].Tag;
-                    this.OnViewStateChanged("RemoveActivity");
-                }
-            }
-        }
+        //private void btnRemove_Click(object sender, EventArgs e)
+        //{
+        //    if (this.lvwActivity.SelectedIndices.Count > 0)
+        //    {
+        //        if (MessageBox.Show("Do you want to delete this Activity and all related tasks?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
+        //        {
+        //            this.ViewData["activityGuid"] = this.lvwActivity.Items[lvwActivity.SelectedIndices[0]].Tag;
+        //            this.ItemChanged = true;
+        //            this.OnViewStateChanged("RemoveActivity");
+        //        }
+        //    }
+        //}
 
         private void mnuAdd_Click(object sender, EventArgs e)
         {
             Views.Category.Category categoryForm = new Views.Category.Category();
             Controllers.CategoryController categoryController = new Controllers.CategoryController(categoryForm);
             categoryForm.ShowDialog();
+            this.ItemChanged = categoryForm.ItemChanged;
+
             this.OnViewStateChanged("FillActivityGrid");
         }
 
@@ -75,6 +80,7 @@ namespace TimeTracker.Views.Category
                 if (MessageBox.Show("Do you want to delete this Activity and all related tasks?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
                 {
                     this.ViewData["activityGuid"] = this.lvwActivity.Items[lvwActivity.SelectedIndices[0]].Tag;
+                    this.ItemChanged = true;
                     this.OnViewStateChanged("RemoveActivity");
                 }
             }

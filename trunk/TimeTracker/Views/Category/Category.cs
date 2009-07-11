@@ -18,6 +18,8 @@ namespace TimeTracker.Views.Category
             InitializeComponent();
         }
 
+        public bool ItemChanged { get; set; }
+
         protected override void OnUpdateView(string key)
         {
             switch (key)
@@ -37,7 +39,9 @@ namespace TimeTracker.Views.Category
 
             this.ViewData["activity"] = activity;
             this.OnViewStateChanged("AddActivity");
-            this.Close();        
+            this.ItemChanged = true;
+
+            this.Close();
         }
 
         private void mnuBack_Click(object sender, EventArgs e)
