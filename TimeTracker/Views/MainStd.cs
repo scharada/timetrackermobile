@@ -198,6 +198,11 @@
             Views.Category.Categories categoriesForm = new Views.Category.Categories();
             Controllers.CategoryController categoryController = new Controllers.CategoryController(categoriesForm);
             categoriesForm.ShowDialog();
+
+            if (categoriesForm.ItemChanged)
+            {
+                this.OnViewStateChanged("FillActivitiesCombo");
+            }
         }
 
         private void mnuAbout_Click_1(object sender, EventArgs e)
@@ -289,6 +294,18 @@
                     this.ViewData["taskGuid"] = this.lvwTasks.Items[lvwTasks.SelectedIndices[0]].Tag;
                     this.OnViewStateChanged("RemoveTask");
                 }
+            }
+        }
+
+        private void txtNotes_GotFocus(object sender, EventArgs e)
+        {
+            if (this.txtNotes.Text.Trim() == "Notes")
+            {
+                this.txtNotes.Text = "";
+            }
+            else if(this.txtNotes.Text.Trim() == "")
+            {
+                this.txtNotes.Text = "Notes";
             }
         }
     }

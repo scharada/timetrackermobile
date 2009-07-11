@@ -54,6 +54,7 @@
             this.imgDatePost = new System.Windows.Forms.PictureBox();
             this.imgStop = new System.Windows.Forms.PictureBox();
             this.imgStart = new System.Windows.Forms.PictureBox();
+            this.txtNotes = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // mainMenu1
@@ -198,9 +199,9 @@
             // cmbActivities
             // 
             this.cmbActivities.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.cmbActivities.Location = new System.Drawing.Point(7, 222);
+            this.cmbActivities.Location = new System.Drawing.Point(7, 238);
             this.cmbActivities.Name = "cmbActivities";
-            this.cmbActivities.Size = new System.Drawing.Size(129, 22);
+            this.cmbActivities.Size = new System.Drawing.Size(154, 22);
             this.cmbActivities.TabIndex = 11;
             this.cmbActivities.SelectedIndexChanged += new System.EventHandler(this.cmbActivities_SelectedIndexChanged_1);
             // 
@@ -225,7 +226,7 @@
             // 
             this.imgStop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.imgStop.Image = ((System.Drawing.Image)(resources.GetObject("imgStop.Image")));
-            this.imgStop.Location = new System.Drawing.Point(161, 199);
+            this.imgStop.Location = new System.Drawing.Point(170, 199);
             this.imgStop.Name = "imgStop";
             this.imgStop.Size = new System.Drawing.Size(65, 65);
             this.imgStop.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -235,12 +236,24 @@
             // 
             this.imgStart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.imgStart.Image = ((System.Drawing.Image)(resources.GetObject("imgStart.Image")));
-            this.imgStart.Location = new System.Drawing.Point(161, 199);
+            this.imgStart.Location = new System.Drawing.Point(170, 199);
             this.imgStart.Name = "imgStart";
             this.imgStart.Size = new System.Drawing.Size(65, 65);
             this.imgStart.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imgStart.Tag = "Start";
             this.imgStart.Click += new System.EventHandler(this.imgStart_Click_1);
+            // 
+            // txtNotes
+            // 
+            this.txtNotes.Location = new System.Drawing.Point(7, 198);
+            this.txtNotes.MaxLength = 512;
+            this.txtNotes.Multiline = true;
+            this.txtNotes.Name = "txtNotes";
+            this.txtNotes.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtNotes.Size = new System.Drawing.Size(154, 33);
+            this.txtNotes.TabIndex = 16;
+            this.txtNotes.Text = "Notes";
+            this.txtNotes.GotFocus += new System.EventHandler(this.txtNotes_GotFocus);
             // 
             // MainStd
             // 
@@ -249,6 +262,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(240, 268);
+            this.Controls.Add(this.txtNotes);
             this.Controls.Add(this.lblTotal);
             this.Controls.Add(this.lblDate);
             this.Controls.Add(this.lblStop);
@@ -295,5 +309,6 @@
         private System.Windows.Forms.PictureBox imgStop;
         private System.Windows.Forms.PictureBox imgStart;
         private System.Windows.Forms.MenuItem mnuChangeCategory;
+        private System.Windows.Forms.TextBox txtNotes;
     }
 }
