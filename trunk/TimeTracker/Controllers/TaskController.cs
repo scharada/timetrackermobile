@@ -127,11 +127,11 @@
                     this.view.ViewData["tasksByDay"] = this.taskService.GetTasksByDay((DateTime)this.view.ViewData["today"]);
                     this.view.UpdateView("FillActivityGrid");
                     break;
-                case "DeleteTask":
+                case "RemoveTask":
                     this.taskService.RemoveTask(new Guid(this.view.ViewData["taskGuid"].ToString()));
                     this.view.ViewData["activities"] = this.taskService.GetActivities();
                     this.view.ViewData["tasksByDay"] = this.taskService.GetTasksByDay((DateTime)this.view.ViewData["today"]);
-                    this.view.UpdateView("FillActivityGrid");
+                    this.view.UpdateView("FillGrid");
                     break;
                 case "Save":
                     this.taskService.UpdateTask(this.view.ViewData.Model);
@@ -152,7 +152,7 @@
                     this.view.UpdateView("");
                     break;
                 case "TaskStopped":
-                    this.view.ViewData["today"] = "";
+                    this.view.ViewData["notes"] = "";
                     this.view.UpdateView("TaskStopped");
                     break;
 
