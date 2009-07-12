@@ -79,7 +79,7 @@
                 case "TaskStopped":
                     this.txtNotes.Text = this.ViewData["notes"].ToString();
                     break;
-                    
+
                 default:
                     break;
             }
@@ -251,7 +251,14 @@
         {
             ResourceManager resmgr = new ResourceManager("TimeTracker.Resources", Assembly.GetExecutingAssembly());
 
-            this.ViewData["notes"] = this.txtNotes.Text.Trim();
+            if (this.txtNotes.Text.Trim() != "Notes")
+            {
+                this.ViewData["notes"] = this.txtNotes.Text.Trim();
+            }
+            else
+            {
+                this.ViewData["notes"] = "";
+            }
 
             if (OnStartStopEvent != null)
             {
