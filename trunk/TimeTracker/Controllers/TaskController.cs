@@ -70,7 +70,9 @@
                 timer.Dispose();
                 timer = null;
 
-                SaveTask((Guid)this.view.ViewData["activityGuid"]);
+                SaveTask((Guid)this.view.ViewData["activityGuid"], this.view.ViewData["notes"].ToString());
+                this.view.ViewData["notes"] = "";
+
                 if (OnTaskStopedEvent != null)
                 {
                     OnTaskStopedEvent(this, new EventArgs());
@@ -149,15 +151,19 @@
                     ExportTasks();
                     this.view.UpdateView("");
                     break;
+                case "TaskStopped":
+                    this.view.ViewData["today"] = "";
+                    this.view.UpdateView("TaskStopped");
+                    break;
 
                 default:
                     break;
             }
         }
 
-        private void SaveTask(Guid activityId)
+        private void SaveTask(Guid activityId, string notes)
         {
-            Task task = new Task { ActivityId = activityId, DatetimeFrom = start, DatetimeTo = now, Diff = 0 };
+            Task task = new Task { ActivityId = activityId, DatetimeFrom = start, DatetimeTo = now, Diff = 0, Notes = notes };
             this.taskService.AddTask(task);
         }
 

@@ -13,5 +13,6 @@ namespace TimeTracker.Services.Contracts
         public DateTime DatetimeTo { get; set; }
         public int Diff { get; set; }
         public Activity activity { get; set; }
+        public string Notes { get; set; }
     }
 }

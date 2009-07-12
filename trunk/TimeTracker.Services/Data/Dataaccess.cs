@@ -91,7 +91,7 @@
             using (var command = DBConnectionProvider.Current.CreateCommand())
             {
                 command.CommandType = System.Data.CommandType.Text;
-                command.CommandText = "INSERT INTO Tasks(Id, ActivityId, DatetimeFrom, DatetimeTo, Diff) VALUES (newid(),'" + task.ActivityId + "','" + task.DatetimeFrom + "','" + task.DatetimeTo + "'," + task.Diff + ")";
+                command.CommandText = "INSERT INTO Tasks(Id, ActivityId, DatetimeFrom, DatetimeTo, Diff, notes) VALUES (newid(),'" + task.ActivityId + "','" + task.DatetimeFrom + "','" + task.DatetimeTo + "'," + task.Diff + ",'" + task.Notes + "')";
                 command.ExecuteNonQuery();
             }
         }
@@ -103,7 +103,7 @@
                 command.CommandType = System.Data.CommandType.Text;
                 command.CommandText = "UPDATE Tasks SET ActivityId ='" + task.ActivityId +
                     "', DatetimeFrom = '" + task.DatetimeFrom + "', DatetimeTo = '" + task.DatetimeTo +
-                    "', Diff = " + task.Diff + " WHERE Id = '" + task.Id + "'";
+                    "', Diff = " + task.Diff + ", Notes ='" + task.Notes + "' WHERE Id = '" + task.Id + "'";
 
                 command.ExecuteNonQuery();
             }
@@ -144,7 +144,7 @@
             using (var command = DBConnectionProvider.Current.CreateCommand())
             {
                 command.CommandType = System.Data.CommandType.Text;
-                command.CommandText = "SELECT T.Id, T.ActivityId, T.DatetimeFrom, T.DatetimeTo, T.Diff, A.Description FROM Tasks T INNER JOIN Activities A ON A.Id = T.ActivityId WHERE T.Id = '" + id.ToString() + "'";
+                command.CommandText = "SELECT T.Id, T.ActivityId, T.DatetimeFrom, T.DatetimeTo, T.Diff, A.Description, T.Notes FROM Tasks T INNER JOIN Activities A ON A.Id = T.ActivityId WHERE T.Id = '" + id.ToString() + "'";
 
                 using (var reader = command.ExecuteReader())
                 {
@@ -159,6 +159,7 @@
                             DatetimeFrom = reader.GetDateTime(2),
                             DatetimeTo = reader.GetDateTime(3),
                             Diff = reader.GetInt32(4),
+                            Notes = reader.GetString(6),
                             activity = activity
                         };
                     }

@@ -38,6 +38,8 @@
             this.menuItem2 = new System.Windows.Forms.MenuItem();
             this.menuItem1 = new System.Windows.Forms.MenuItem();
             this.mnuCategory = new System.Windows.Forms.MenuItem();
+            this.mnuChart = new System.Windows.Forms.MenuItem();
+            this.menuItem3 = new System.Windows.Forms.MenuItem();
             this.mnuAbout = new System.Windows.Forms.MenuItem();
             this.mnuStartStop = new System.Windows.Forms.MenuItem();
             this.lblTotal = new System.Windows.Forms.Label();
@@ -55,8 +57,6 @@
             this.imgStop = new System.Windows.Forms.PictureBox();
             this.imgStart = new System.Windows.Forms.PictureBox();
             this.txtNotes = new System.Windows.Forms.TextBox();
-            this.mnuChart = new System.Windows.Forms.MenuItem();
-            this.menuItem3 = new System.Windows.Forms.MenuItem();
             this.SuspendLayout();
             // 
             // mainMenu1
@@ -108,12 +108,21 @@
             // mnuCategory
             // 
             this.mnuCategory.Text = "Category";
-            this.mnuCategory.Click += new System.EventHandler(this.mnuCategory_Click_1);
+            this.mnuCategory.Click += new System.EventHandler(this.mnuCategory_Click);
+            // 
+            // mnuChart
+            // 
+            this.mnuChart.Text = "Chart";
+            this.mnuChart.Click += new System.EventHandler(this.mnuChart_Click);
+            // 
+            // menuItem3
+            // 
+            this.menuItem3.Text = "-";
             // 
             // mnuAbout
             // 
             this.mnuAbout.Text = "About";
-            this.mnuAbout.Click += new System.EventHandler(this.mnuAbout_Click_1);
+            this.mnuAbout.Click += new System.EventHandler(this.mnuAbout_Click);
             // 
             // mnuStartStop
             // 
@@ -175,7 +184,7 @@
             this.lvwTasks.Size = new System.Drawing.Size(240, 144);
             this.lvwTasks.TabIndex = 8;
             this.lvwTasks.View = System.Windows.Forms.View.Details;
-            this.lvwTasks.ItemActivate += new System.EventHandler(this.lvwTasks_ItemActivate_1);
+            this.lvwTasks.ItemActivate += new System.EventHandler(this.lvwTasks_ItemActivate);
             // 
             // colActivity
             // 
@@ -207,7 +216,7 @@
             this.cmbActivities.Name = "cmbActivities";
             this.cmbActivities.Size = new System.Drawing.Size(154, 22);
             this.cmbActivities.TabIndex = 11;
-            this.cmbActivities.SelectedIndexChanged += new System.EventHandler(this.cmbActivities_SelectedIndexChanged_1);
+            this.cmbActivities.SelectedIndexChanged += new System.EventHandler(this.cmbActivities_SelectedIndexChanged);
             // 
             // imgDatePrev
             // 
@@ -216,6 +225,7 @@
             this.imgDatePrev.Name = "imgDatePrev";
             this.imgDatePrev.Size = new System.Drawing.Size(22, 22);
             this.imgDatePrev.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imgDatePrev.Click += new System.EventHandler(this.imgDatePrev_Click);
             // 
             // imgDatePost
             // 
@@ -225,6 +235,7 @@
             this.imgDatePost.Name = "imgDatePost";
             this.imgDatePost.Size = new System.Drawing.Size(22, 22);
             this.imgDatePost.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imgDatePost.Click += new System.EventHandler(this.imgDatePost_Click);
             // 
             // imgStop
             // 
@@ -245,7 +256,7 @@
             this.imgStart.Size = new System.Drawing.Size(65, 65);
             this.imgStart.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imgStart.Tag = "Start";
-            this.imgStart.Click += new System.EventHandler(this.imgStart_Click_1);
+            this.imgStart.Click += new System.EventHandler(this.imgStart_Click);
             // 
             // txtNotes
             // 
@@ -258,15 +269,6 @@
             this.txtNotes.TabIndex = 16;
             this.txtNotes.Text = "Notes";
             this.txtNotes.GotFocus += new System.EventHandler(this.txtNotes_GotFocus);
-            // 
-            // mnuChart
-            // 
-            this.mnuChart.Text = "Chart";
-            this.mnuChart.Click += new System.EventHandler(this.mnuChart_Click);
-            // 
-            // menuItem3
-            // 
-            this.menuItem3.Text = "-";
             // 
             // MainStd
             // 

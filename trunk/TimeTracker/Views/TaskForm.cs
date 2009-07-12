@@ -33,6 +33,7 @@
                 this.txtElapsed.Text = this.ViewData.Model.Diff.ToString();
                 this.txtFrom.Value = this.ViewData.Model.DatetimeFrom;
                 this.txtTo.Value = this.ViewData.Model.DatetimeTo;
+                this.txtNotes.Text = this.ViewData.Model.Notes;
             }
         }
 
@@ -57,6 +58,7 @@
             this.ViewData.Model.ActivityId = new Guid(this.cmbActivities.SelectedValue.ToString());
             this.ViewData.Model.DatetimeFrom = this.txtFrom.Value;
             this.ViewData.Model.DatetimeTo = this.txtTo.Value;
+            this.ViewData.Model.Notes = this.txtNotes.Text.Trim();
 
             this.OnViewStateChanged("Save");
             this.DialogResult = DialogResult.Yes;
