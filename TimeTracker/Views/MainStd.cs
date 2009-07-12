@@ -45,6 +45,7 @@
         private void OnTaskStoped(object sender, EventArgs e)
         {
             this.OnViewStateChanged("FillGrid");
+            this.OnViewStateChanged("TaskStopped");
         }
 
         private void OnTaskElapsedTimeUpdated(object sender, DataEventArgs<string> e)
@@ -75,6 +76,10 @@
                     this.lblDate.Text = ((DateTime)this.ViewData["today"]).ToLongDateString();
                     this.FillGrid();
                     break;
+                case "TaskStopped":
+                    this.txtNotes.Text = this.ViewData["notes"].ToString();
+                    break;
+                    
                 default:
                     break;
             }
@@ -188,12 +193,10 @@
 
         private void mnuStartStop_Click(object sender, EventArgs e)
         {
-            imgStart_Click_1(new object(), new EventArgs());
+            imgStart_Click(new object(), new EventArgs());
         }
 
-
-
-        private void mnuCategory_Click_1(object sender, EventArgs e)
+        private void mnuCategory_Click(object sender, EventArgs e)
         {
             Views.Category.Categories categoriesForm = new Views.Category.Categories();
             Controllers.CategoryController categoryController = new Controllers.CategoryController(categoriesForm);
@@ -205,7 +208,7 @@
             }
         }
 
-        private void mnuAbout_Click_1(object sender, EventArgs e)
+        private void mnuAbout_Click(object sender, EventArgs e)
         {
             Views.AboutForm aboutForm = new Views.AboutForm();
             Controllers.AboutController aboutController = new Controllers.AboutController(aboutForm);
@@ -219,7 +222,7 @@
             exportForm.ShowDialog();
         }
 
-        private void cmbActivities_SelectedIndexChanged_1(object sender, EventArgs e)
+        private void cmbActivities_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (OnActivityComboIndexSelectedChangedEvent != null)
             {
@@ -227,7 +230,7 @@
             }
         }
 
-        private void lvwTasks_ItemActivate_1(object sender, EventArgs e)
+        private void lvwTasks_ItemActivate(object sender, EventArgs e)
         {
             if (lvwTasks.SelectedIndices.Count > 0)
             {
@@ -244,9 +247,11 @@
             }
         }
 
-        private void imgStart_Click_1(object sender, EventArgs e)
+        private void imgStart_Click(object sender, EventArgs e)
         {
             ResourceManager resmgr = new ResourceManager("TimeTracker.Resources", Assembly.GetExecutingAssembly());
+
+            this.ViewData["notes"] = this.txtNotes.Text.Trim();
 
             if (OnStartStopEvent != null)
             {
@@ -303,7 +308,7 @@
             {
                 this.txtNotes.Text = "";
             }
-            else if(this.txtNotes.Text.Trim() == "")
+            else if (this.txtNotes.Text.Trim() == "")
             {
                 this.txtNotes.Text = "Notes";
             }

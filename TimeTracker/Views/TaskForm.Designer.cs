@@ -37,8 +37,10 @@
             this.txtFrom = new System.Windows.Forms.DateTimePicker();
             this.txtTo = new System.Windows.Forms.DateTimePicker();
             this.mainMenu1 = new System.Windows.Forms.MainMenu();
-            this.mnuSave = new System.Windows.Forms.MenuItem();
             this.mnuCancel = new System.Windows.Forms.MenuItem();
+            this.mnuSave = new System.Windows.Forms.MenuItem();
+            this.lblNotes = new System.Windows.Forms.Label();
+            this.txtNotes = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // lblActivity
@@ -81,7 +83,7 @@
             this.txtElapsed.Location = new System.Drawing.Point(74, 138);
             this.txtElapsed.Name = "txtElapsed";
             this.txtElapsed.ReadOnly = true;
-            this.txtElapsed.Size = new System.Drawing.Size(100, 21);
+            this.txtElapsed.Size = new System.Drawing.Size(144, 21);
             this.txtElapsed.TabIndex = 10;
             // 
             // txtFrom
@@ -107,15 +109,30 @@
             this.mainMenu1.MenuItems.Add(this.mnuCancel);
             this.mainMenu1.MenuItems.Add(this.mnuSave);
             // 
+            // mnuCancel
+            // 
+            this.mnuCancel.Text = "Cancel";
+            this.mnuCancel.Click += new System.EventHandler(this.mnuCancel_Click);
+            // 
             // mnuSave
             // 
             this.mnuSave.Text = "Save";
             this.mnuSave.Click += new System.EventHandler(this.mnuSave_Click);
             // 
-            // mnuCancel
+            // lblNotes
             // 
-            this.mnuCancel.Text = "Cancel";
-            this.mnuCancel.Click += new System.EventHandler(this.mnuCancel_Click);
+            this.lblNotes.Location = new System.Drawing.Point(16, 176);
+            this.lblNotes.Name = "lblNotes";
+            this.lblNotes.Size = new System.Drawing.Size(52, 20);
+            this.lblNotes.Text = "Notes:";
+            // 
+            // txtNotes
+            // 
+            this.txtNotes.Location = new System.Drawing.Point(74, 176);
+            this.txtNotes.Multiline = true;
+            this.txtNotes.Name = "txtNotes";
+            this.txtNotes.Size = new System.Drawing.Size(144, 55);
+            this.txtNotes.TabIndex = 21;
             // 
             // TaskForm
             // 
@@ -123,6 +140,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(240, 268);
+            this.Controls.Add(this.lblNotes);
+            this.Controls.Add(this.txtNotes);
             this.Controls.Add(this.txtTo);
             this.Controls.Add(this.txtFrom);
             this.Controls.Add(this.lblElapsed);
@@ -152,5 +171,7 @@
         private System.Windows.Forms.MainMenu mainMenu1;
         private System.Windows.Forms.MenuItem mnuSave;
         private System.Windows.Forms.MenuItem mnuCancel;
+        private System.Windows.Forms.Label lblNotes;
+        private System.Windows.Forms.TextBox txtNotes;
     }
 }
