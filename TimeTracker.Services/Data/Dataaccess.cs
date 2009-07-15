@@ -21,7 +21,7 @@
             using (var command = DBConnectionProvider.Current.CreateCommand())
             {
                 command.CommandType = System.Data.CommandType.Text;
-                command.CommandText = "SELECT Id, Description, Color FROM Activities";
+                command.CommandText = "SELECT Id, Description, Color FROM Activities ORDER BY Description";
 
                 using (var reader = command.ExecuteReader())
                 {
@@ -116,7 +116,7 @@
             using (var command = DBConnectionProvider.Current.CreateCommand())
             {
                 command.CommandType = System.Data.CommandType.Text;
-                command.CommandText = "SELECT T.Id, T.ActivityId, T.DatetimeFrom, T.DatetimeTo, T.Diff, A.Description FROM Tasks T INNER JOIN Activities A ON A.Id = T.ActivityId";
+                command.CommandText = "SELECT T.Id, T.ActivityId, T.DatetimeFrom, T.DatetimeTo, T.Diff, A.Description FROM Tasks T INNER JOIN Activities A ON A.Id = T.ActivityId ORDER BY T.DatetimeFrom";
 
                 using (var reader = command.ExecuteReader())
                 {
@@ -179,7 +179,7 @@
             using (var command = DBConnectionProvider.Current.CreateCommand())
             {
                 command.CommandType = System.Data.CommandType.Text;
-                command.CommandText = "SELECT T.Id, T.ActivityId, T.DatetimeFrom, T.DatetimeTo, T.Diff, A.Description FROM Tasks T INNER JOIN Activities A ON A.Id = T.ActivityId WHERE CONVERT(nvarchar(10),DatetimeFrom,120) = '" + formatedDay + "'";
+                command.CommandText = "SELECT T.Id, T.ActivityId, T.DatetimeFrom, T.DatetimeTo, T.Diff, A.Description FROM Tasks T INNER JOIN Activities A ON A.Id = T.ActivityId WHERE CONVERT(nvarchar(10),DatetimeFrom,120) = '" + formatedDay + "' ORDER BY T.DatetimeFrom";
 
                 using (var reader = command.ExecuteReader())
                 {
@@ -211,7 +211,7 @@
             using (var command = DBConnectionProvider.Current.CreateCommand())
             {
                 command.CommandType = System.Data.CommandType.Text;
-                command.CommandText = "SELECT T.Id, T.ActivityId, T.DatetimeFrom, T.DatetimeTo, T.Diff, A.Description FROM Tasks T INNER JOIN Activities A ON A.Id = T.ActivityId WHERE CONVERT(nvarchar(10),DatetimeFrom,120) >= '" + formatedDayFrom + "' AND CONVERT(nvarchar(10),DatetimeFrom,120) <= '" + formatedDayTo + "'";
+                command.CommandText = "SELECT T.Id, T.ActivityId, T.DatetimeFrom, T.DatetimeTo, T.Diff, A.Description FROM Tasks T INNER JOIN Activities A ON A.Id = T.ActivityId WHERE CONVERT(nvarchar(10),DatetimeFrom,120) >= '" + formatedDayFrom + "' AND CONVERT(nvarchar(10),DatetimeFrom,120) <= '" + formatedDayTo + "' ORDER BY T.DatetimeFrom";
 
 
                 using (var reader = command.ExecuteReader())
