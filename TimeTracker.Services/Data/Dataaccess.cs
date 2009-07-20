@@ -211,7 +211,7 @@
             using (var command = DBConnectionProvider.Current.CreateCommand())
             {
                 command.CommandType = System.Data.CommandType.Text;
-                command.CommandText = "SELECT T.Id, T.ActivityId, T.DatetimeFrom, T.DatetimeTo, T.Diff, A.Description FROM Tasks T INNER JOIN Activities A ON A.Id = T.ActivityId WHERE CONVERT(nvarchar(10),DatetimeFrom,120) >= '" + formatedDayFrom + "' AND CONVERT(nvarchar(10),DatetimeFrom,120) <= '" + formatedDayTo + "' ORDER BY T.DatetimeFrom";
+                command.CommandText = "SELECT T.Id, T.ActivityId, T.DatetimeFrom, T.DatetimeTo, T.Diff, A.Description, T.Notes FROM Tasks T INNER JOIN Activities A ON A.Id = T.ActivityId WHERE CONVERT(nvarchar(10),DatetimeFrom,120) >= '" + formatedDayFrom + "' AND CONVERT(nvarchar(10),DatetimeFrom,120) <= '" + formatedDayTo + "' ORDER BY T.DatetimeFrom";
 
 
                 using (var reader = command.ExecuteReader())
@@ -226,7 +226,8 @@
                             DatetimeFrom = reader.GetDateTime(2),
                             DatetimeTo = reader.GetDateTime(3),
                             Diff = reader.GetInt32(4),
-                            activity = activity
+                            activity = activity,
+                            Notes = reader.GetString(6)
                         });
                     }
                 }
