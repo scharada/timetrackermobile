@@ -131,7 +131,8 @@
             // 
             // lblTotal
             // 
-            this.lblTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblTotal.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTotal.BackColor = System.Drawing.Color.White;
             this.lblTotal.Location = new System.Drawing.Point(151, 175);
             this.lblTotal.Name = "lblTotal";
@@ -153,7 +154,8 @@
             // 
             // lblStop
             // 
-            this.lblStop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblStop.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.lblStop.BackColor = System.Drawing.Color.White;
             this.lblStop.Location = new System.Drawing.Point(79, 174);
             this.lblStop.Name = "lblStop";
@@ -162,7 +164,8 @@
             // 
             // lblStart
             // 
-            this.lblStart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblStart.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.lblStart.BackColor = System.Drawing.Color.White;
             this.lblStart.Location = new System.Drawing.Point(7, 174);
             this.lblStart.Name = "lblStart";
@@ -239,7 +242,8 @@
             // 
             // imgStop
             // 
-            this.imgStop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.imgStop.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.imgStop.Image = ((System.Drawing.Image)(resources.GetObject("imgStop.Image")));
             this.imgStop.Location = new System.Drawing.Point(170, 199);
             this.imgStop.Name = "imgStop";
@@ -249,7 +253,8 @@
             // 
             // imgStart
             // 
-            this.imgStart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.imgStart.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.imgStart.Image = ((System.Drawing.Image)(resources.GetObject("imgStart.Image")));
             this.imgStart.Location = new System.Drawing.Point(170, 199);
             this.imgStart.Name = "imgStart";
@@ -260,6 +265,8 @@
             // 
             // txtNotes
             // 
+            this.txtNotes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.txtNotes.Location = new System.Drawing.Point(7, 198);
             this.txtNotes.MaxLength = 512;
             this.txtNotes.Multiline = true;

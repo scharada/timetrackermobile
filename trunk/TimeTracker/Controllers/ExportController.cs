@@ -56,12 +56,17 @@ namespace TimeTracker.Controllers
             string path = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase) + "\\Exports\\";
             StreamWriter textWriter = new StreamWriter(@path + "export" + DateTime.Now.Second.ToString() + ".csv", true);
             string pc = ";";
+            string dateTimeFrom = string.Empty;
+            string dateTimeTo = string.Empty;
 
             int count = 1;
 
             foreach (Task task in tasks)
             {
-                textWriter.WriteLine(task.activity.Description + pc + task.DatetimeFrom + pc + task.DatetimeTo + pc + task.Diff);
+                dateTimeFrom = string.Format("{0:dd/MM/yyyy HH:mm:ss}", task.DatetimeFrom);
+                dateTimeTo = string.Format("{0:dd/MM/yyyy HH:mm:ss}", task.DatetimeTo);
+
+                textWriter.WriteLine(task.activity.Description + pc + dateTimeFrom + pc + dateTimeTo + pc + task.Diff + pc + task.Notes);
 
                 if (OnExportStatusUpdatedEvent != null)
                 {
